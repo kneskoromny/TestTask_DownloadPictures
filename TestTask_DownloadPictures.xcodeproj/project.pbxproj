@@ -20,9 +20,9 @@
 		F77CC75B274A3ADA00E6E36C /* UserListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC755274A3ADA00E6E36C /* UserListModels.swift */; };
 		F77CC75C274A3ADA00E6E36C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC756274A3ADA00E6E36C /* UserListViewController.swift */; };
 		F77CC75D274A3ADA00E6E36C /* UserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */; };
+		F77CC760274A420B00E6E36C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC75F274A420B00E6E36C /* UserCell.swift */; };
 		F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937326274A1941004E4D6B /* AppDelegate.swift */; };
 		F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937328274A1941004E4D6B /* SceneDelegate.swift */; };
-		F793732B274A1941004E4D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793732A274A1941004E4D6B /* ViewController.swift */; };
 		F793732E274A1941004E4D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F793732C274A1941004E4D6B /* Main.storyboard */; };
 		F7937330274A1943004E4D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F793732F274A1943004E4D6B /* Assets.xcassets */; };
 		F7937333274A1943004E4D6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7937331274A1943004E4D6B /* LaunchScreen.storyboard */; };
@@ -55,10 +55,10 @@
 		F77CC755274A3ADA00E6E36C /* UserListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModels.swift; sourceTree = "<group>"; };
 		F77CC756274A3ADA00E6E36C /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListInteractor.swift; sourceTree = "<group>"; };
+		F77CC75F274A420B00E6E36C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F7937323274A1941004E4D6B /* TestTask_DownloadPictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask_DownloadPictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7937326274A1941004E4D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7937328274A1941004E4D6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F793732A274A1941004E4D6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F793732D274A1941004E4D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F793732F274A1943004E4D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7937332274A1943004E4D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,6 +100,14 @@
 			path = UserListScene;
 			sourceTree = "<group>";
 		};
+		F77CC761274A420F00E6E36C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F77CC75F274A420B00E6E36C /* UserCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F793731A274A1941004E4D6B = {
 			isa = PBXGroup;
 			children = (
@@ -122,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				F77CC75E274A3AE200E6E36C /* UserListScene */,
+				F77CC761274A420F00E6E36C /* Views */,
 				F7937356274A196A004E4D6B /* Supports */,
-				F793732A274A1941004E4D6B /* ViewController.swift */,
 				F7937357274A1982004E4D6B /* Storyboards */,
 				F793732F274A1943004E4D6B /* Assets.xcassets */,
 			);
@@ -308,9 +316,9 @@
 				F77CC74E274A349300E6E36C /* Photo.swift in Sources */,
 				F7937361274A1E11004E4D6B /* User.swift in Sources */,
 				F77CC758274A3ADA00E6E36C /* UserListPresenter.swift in Sources */,
-				F793732B274A1941004E4D6B /* ViewController.swift in Sources */,
 				F77CC759274A3ADA00E6E36C /* UserListWorker.swift in Sources */,
 				F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */,
+				F77CC760274A420B00E6E36C /* UserCell.swift in Sources */,
 				F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */,
 				F77CC75B274A3ADA00E6E36C /* UserListModels.swift in Sources */,
 				F733B9AB274A30120075F9D6 /* Album.swift in Sources */,

@@ -26,6 +26,6 @@ class UserListPresenter: UserListPresentationLogic
   func presentSomething(response: UserList.Something.Response)
   {
     let viewModel = UserList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    viewController?.displayUsers(viewModel: viewModel)
   }
 }
