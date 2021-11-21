@@ -20,6 +20,7 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
     var interactor: UserListBusinessLogic?
     var router: (NSObjectProtocol & UserListRoutingLogic & UserListDataPassing)?
     
+    // MARK: - UI Elements
     private var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +45,7 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
         super.viewDidLoad()
         tableView.dataSource = self
         addTableView()
+        setupNavigationBar()
         
         doSomething()
     }
@@ -72,7 +74,7 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
         }
     }
     
-    // MARK: - Do something
+    // MARK: - UI Customization
     private func addTableView() {
         view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
@@ -80,6 +82,19 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
     }
+    
+    private func setupNavigationBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+    }
+    
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSomething() {
@@ -96,13 +111,9 @@ extension UserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
         
         return cell
     }
-    
-    
 }
