@@ -7,17 +7,24 @@
 
 import UIKit
 
-class UserCell: UITableViewCell {
+protocol CellModelRepresentable {
+    var viewModel: CellIdentifiable? { get set }
+}
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class UserCell: UITableViewCell, CellModelRepresentable {
+    var viewModel: CellIdentifiable? {
+        didSet {
+            updateView()
+        }
     }
+    
+    private func updateView() {
+        guard let viewModel = viewModel as? UserCellViewModel else { return }
+        var content = defaultContentConfiguration()
+        
+        content.text = viewModel.name
+        contentConfiguration = content
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

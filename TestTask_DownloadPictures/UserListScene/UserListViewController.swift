@@ -13,12 +13,15 @@
 import UIKit
 
 protocol UserListDisplayLogic: AnyObject {
-    func displayUsers(viewModel: UserList.Something.ViewModel)
+    func displayUsers(viewModel: UserList.ShowUsers.ViewModel)
 }
 
-class UserListViewController: UIViewController, UserListDisplayLogic {
+class UserListViewController: UIViewController {
+    
     var interactor: UserListBusinessLogic?
     var router: (NSObjectProtocol & UserListRoutingLogic & UserListDataPassing)?
+    
+    private var rows = [UserCellViewModel]()
     
     // MARK: - UI Elements
     private var tableView: UITableView = {
@@ -29,42 +32,20 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
         return tv
     }()
     
-    // MARK: - Object lifecycle
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserListConfigurator.shared.configure(with: self)
         tableView.dataSource = self
+        
         addTableView()
         setupNavigationBar()
+        navigationItem.title = "Пользователи"
         
-        doSomething()
+        getUsers()
     }
     
-    // MARK: - Setup
-    private func setup() {
-        let viewController = self
-        let interactor = UserListInteractor()
-        let presenter = UserListPresenter()
-        let router = UserListRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
-    // MARK: - Routing
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
@@ -72,6 +53,11 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
                 router.perform(selector, with: segue)
             }
         }
+    }
+    
+    // MARK: - Fetch Data
+    private func getUsers() {
+        interactor?.fetchUsers()
     }
     
     // MARK: - UI Customization
@@ -94,26 +80,30 @@ class UserListViewController: UIViewController, UserListDisplayLogic {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
     }
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = UserList.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displayUsers(viewModel: UserList.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+
+}
+
+// MARK: - UserListDisplayLogic
+extension UserListViewController: UserListDisplayLogic {
+    func displayUsers(viewModel: UserList.ShowUsers.ViewModel) {
+        
+        rows = viewModel.rows
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
+
 // MARK: - Table View Data Source
 extension UserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        rows.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as! UserCell
+        let cellViewModel = rows[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier) as! UserCell
         
+        cell.viewModel = cellViewModel
         return cell
     }
 }

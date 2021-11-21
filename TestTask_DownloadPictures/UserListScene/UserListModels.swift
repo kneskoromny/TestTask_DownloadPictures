@@ -9,21 +9,33 @@
 //  you can apply clean architecture to your iOS and Mac projects,
 //  see http://clean-swift.com
 //
+typealias UserCellViewModel = UserList.ShowUsers.ViewModel.UserCellViewModel
 
-enum UserList
-{
+protocol CellIdentifiable {
+    var identifier: String { get }
+}
+
+enum UserList {
   // MARK: Use cases
   
-  enum Something
-  {
-    struct Request
-    {
+  enum ShowUsers {
+    // интерактор - презентер
+    struct Response {
+        let users: [User]
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
+      // презентер - контроллер
+    struct ViewModel {
+        struct UserCellViewModel: CellIdentifiable {
+            let name: String
+            var identifier: String {
+                "UserCell"
+            }
+            
+            init(user: User) {
+                name = user.name
+            }
+        }
+        let rows: [UserCellViewModel]
     }
   }
 }
