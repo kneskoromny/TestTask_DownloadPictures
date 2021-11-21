@@ -13,9 +13,10 @@
 		F793732E274A1941004E4D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F793732C274A1941004E4D6B /* Main.storyboard */; };
 		F7937330274A1943004E4D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F793732F274A1943004E4D6B /* Assets.xcassets */; };
 		F7937333274A1943004E4D6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7937331274A1943004E4D6B /* LaunchScreen.storyboard */; };
-		F793733E274A1943004E4D6B /* TestTask_DownloadPicturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793733D274A1943004E4D6B /* TestTask_DownloadPicturesTests.swift */; };
-		F7937348274A1943004E4D6B /* TestTask_DownloadPicturesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937347274A1943004E4D6B /* TestTask_DownloadPicturesUITests.swift */; };
-		F793734A274A1943004E4D6B /* TestTask_DownloadPicturesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937349274A1943004E4D6B /* TestTask_DownloadPicturesUITestsLaunchTests.swift */; };
+		F793733E274A1943004E4D6B /* SearchUsersTests in Sources */ = {isa = PBXBuildFile; fileRef = F793733D274A1943004E4D6B /* SearchUsersTests */; };
+		F7937359274A1A51004E4D6B /* SearchUsers.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7937358274A1A51004E4D6B /* SearchUsers.strings */; };
+		F793735F274A1C35004E4D6B /* Extension + XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793735E274A1C35004E4D6B /* Extension + XCTestCase.swift */; };
+		F7937361274A1E11004E4D6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937360274A1E11004E4D6B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +46,11 @@
 		F7937332274A1943004E4D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7937334274A1943004E4D6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7937339274A1943004E4D6B /* TestTask_DownloadPicturesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTask_DownloadPicturesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F793733D274A1943004E4D6B /* TestTask_DownloadPicturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask_DownloadPicturesTests.swift; sourceTree = "<group>"; };
+		F793733D274A1943004E4D6B /* SearchUsersTests */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = SearchUsersTests; sourceTree = "<group>"; };
 		F7937343274A1943004E4D6B /* TestTask_DownloadPicturesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestTask_DownloadPicturesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7937347274A1943004E4D6B /* TestTask_DownloadPicturesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask_DownloadPicturesUITests.swift; sourceTree = "<group>"; };
-		F7937349274A1943004E4D6B /* TestTask_DownloadPicturesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask_DownloadPicturesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F7937358274A1A51004E4D6B /* SearchUsers.strings */ = {isa = PBXFileReference; explicitFileType = text.json; path = SearchUsers.strings; sourceTree = "<group>"; };
+		F793735E274A1C35004E4D6B /* Extension + XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + XCTestCase.swift"; sourceTree = "<group>"; };
+		F7937360274A1E11004E4D6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				F7937325274A1941004E4D6B /* TestTask_DownloadPictures */,
-				F793733C274A1943004E4D6B /* TestTask_DownloadPicturesTests */,
-				F7937346274A1943004E4D6B /* TestTask_DownloadPicturesUITests */,
+				F7937363274A1E91004E4D6B /* TestTask_UnitTests */,
 				F7937324274A1941004E4D6B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,32 +100,74 @@
 		F7937325274A1941004E4D6B /* TestTask_DownloadPictures */ = {
 			isa = PBXGroup;
 			children = (
-				F7937326274A1941004E4D6B /* AppDelegate.swift */,
-				F7937328274A1941004E4D6B /* SceneDelegate.swift */,
+				F7937356274A196A004E4D6B /* Supports */,
 				F793732A274A1941004E4D6B /* ViewController.swift */,
-				F793732C274A1941004E4D6B /* Main.storyboard */,
+				F7937357274A1982004E4D6B /* Storyboards */,
 				F793732F274A1943004E4D6B /* Assets.xcassets */,
-				F7937331274A1943004E4D6B /* LaunchScreen.storyboard */,
-				F7937334274A1943004E4D6B /* Info.plist */,
 			);
 			path = TestTask_DownloadPictures;
 			sourceTree = "<group>";
 		};
-		F793733C274A1943004E4D6B /* TestTask_DownloadPicturesTests */ = {
+		F793733C274A1943004E4D6B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F793733D274A1943004E4D6B /* TestTask_DownloadPicturesTests.swift */,
+				F793733D274A1943004E4D6B /* SearchUsersTests */,
 			);
-			path = TestTask_DownloadPicturesTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		F7937346274A1943004E4D6B /* TestTask_DownloadPicturesUITests */ = {
+		F7937356274A196A004E4D6B /* Supports */ = {
 			isa = PBXGroup;
 			children = (
-				F7937347274A1943004E4D6B /* TestTask_DownloadPicturesUITests.swift */,
-				F7937349274A1943004E4D6B /* TestTask_DownloadPicturesUITestsLaunchTests.swift */,
+				F7937326274A1941004E4D6B /* AppDelegate.swift */,
+				F7937328274A1941004E4D6B /* SceneDelegate.swift */,
+				F7937334274A1943004E4D6B /* Info.plist */,
 			);
-			path = TestTask_DownloadPicturesUITests;
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		F7937357274A1982004E4D6B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F793732C274A1941004E4D6B /* Main.storyboard */,
+				F7937331274A1943004E4D6B /* LaunchScreen.storyboard */,
+				F7937362274A1E14004E4D6B /* Models */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F793735A274A1B3E004E4D6B /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				F7937358274A1A51004E4D6B /* SearchUsers.strings */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		F7937362274A1E14004E4D6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7937360274A1E11004E4D6B /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F7937363274A1E91004E4D6B /* TestTask_UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				F793733C274A1943004E4D6B /* Tests */,
+				F793735A274A1B3E004E4D6B /* TestData */,
+				F7937364274A1EC5004E4D6B /* Extensions */,
+			);
+			path = TestTask_UnitTests;
+			sourceTree = "<group>";
+		};
+		F7937364274A1EC5004E4D6B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F793735E274A1C35004E4D6B /* Extension + XCTestCase.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +277,7 @@
 				F7937333274A1943004E4D6B /* LaunchScreen.storyboard in Resources */,
 				F7937330274A1943004E4D6B /* Assets.xcassets in Resources */,
 				F793732E274A1941004E4D6B /* Main.storyboard in Resources */,
+				F7937359274A1A51004E4D6B /* SearchUsers.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7937361274A1E11004E4D6B /* User.swift in Sources */,
 				F793732B274A1941004E4D6B /* ViewController.swift in Sources */,
 				F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */,
 				F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */,
@@ -268,7 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F793733E274A1943004E4D6B /* TestTask_DownloadPicturesTests.swift in Sources */,
+				F793735F274A1C35004E4D6B /* Extension + XCTestCase.swift in Sources */,
+				F793733E274A1943004E4D6B /* SearchUsersTests in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F793734A274A1943004E4D6B /* TestTask_DownloadPicturesUITestsLaunchTests.swift in Sources */,
-				F7937348274A1943004E4D6B /* TestTask_DownloadPicturesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,12 +485,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TB5VXYZS9X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTask_DownloadPictures/Info.plist;
+				INFOPLIST_FILE = TestTask_DownloadPictures/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +502,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -469,12 +515,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TB5VXYZS9X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTask_DownloadPictures/Info.plist;
+				INFOPLIST_FILE = TestTask_DownloadPictures/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +532,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
