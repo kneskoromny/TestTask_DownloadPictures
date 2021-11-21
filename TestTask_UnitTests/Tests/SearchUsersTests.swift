@@ -26,6 +26,7 @@ class SearchUsersTests: XCTestCase {
 
     func test_JSONMapping() {
         XCTAssertNotNil(sut)
+        XCTAssertEqual(sut.count, 10)
         XCTAssertEqual(sut.first?.name, "Leanne Graham")
         XCTAssertEqual(sut.first?.address.city, "Gwenborough")
         XCTAssertEqual(sut.first?.company.name, "Romaguera-Crona")
