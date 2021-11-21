@@ -28,6 +28,7 @@
 		F77CC770274A88D800E6E36C /* PhotosModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76A274A88D800E6E36C /* PhotosModels.swift */; };
 		F77CC771274A88D800E6E36C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76B274A88D800E6E36C /* PhotosViewController.swift */; };
 		F77CC772274A88D800E6E36C /* PhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */; };
+		F77CC775274A8CDB00E6E36C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC774274A8CDB00E6E36C /* PhotoCell.swift */; };
 		F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937326274A1941004E4D6B /* AppDelegate.swift */; };
 		F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937328274A1941004E4D6B /* SceneDelegate.swift */; };
 		F793732E274A1941004E4D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F793732C274A1941004E4D6B /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		F77CC76A274A88D800E6E36C /* PhotosModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModels.swift; sourceTree = "<group>"; };
 		F77CC76B274A88D800E6E36C /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosInteractor.swift; sourceTree = "<group>"; };
+		F77CC774274A8CDB00E6E36C /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		F7937323274A1941004E4D6B /* TestTask_DownloadPictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask_DownloadPictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7937326274A1941004E4D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7937328274A1941004E4D6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F77CC75F274A420B00E6E36C /* UserCell.swift */,
+				F77CC774274A8CDB00E6E36C /* PhotoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				F77CC76F274A88D800E6E36C /* PhotosRouter.swift in Sources */,
 				F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */,
 				F77CC770274A88D800E6E36C /* PhotosModels.swift in Sources */,
+				F77CC775274A8CDB00E6E36C /* PhotoCell.swift in Sources */,
 				F77CC75B274A3ADA00E6E36C /* UserListModels.swift in Sources */,
 				F77CC766274A5E4400E6E36C /* UserListConfigurator.swift in Sources */,
 				F733B9AB274A30120075F9D6 /* Album.swift in Sources */,
