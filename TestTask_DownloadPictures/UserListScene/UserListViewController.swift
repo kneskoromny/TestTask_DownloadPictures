@@ -12,78 +12,98 @@
 
 import UIKit
 
-protocol UserListDisplayLogic: class
-{
-  func displaySomething(viewModel: UserList.Something.ViewModel)
+protocol UserListDisplayLogic: AnyObject {
+    func displayUsers(viewModel: UserList.ShowUsers.ViewModel)
 }
 
-class UserListViewController: UIViewController, UserListDisplayLogic
-{
-  var interactor: UserListBusinessLogic?
-  var router: (NSObjectProtocol & UserListRoutingLogic & UserListDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = UserListInteractor()
-    let presenter = UserListPresenter()
-    let router = UserListRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+class UserListViewController: UIViewController {
+    
+    var interactor: UserListBusinessLogic?
+    var router: (NSObjectProtocol & UserListRoutingLogic & UserListDataPassing)?
+    
+    private var rows = [UserCellViewModel]()
+    
+    // MARK: - UI Elements
+    private var tableView: UITableView = {
+        let tv = UITableView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = .lightGray
+        tv.register(UserCell.self, forCellReuseIdentifier: "UserCell")
+        return tv
+    }()
+    
+    // MARK: - View lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        UserListConfigurator.shared.configure(with: self)
+        tableView.dataSource = self
+        
+        addTableView()
+        setupNavigationBar()
+        navigationItem.title = "Пользователи"
+        
+        getUsers()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = UserList.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: UserList.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: - Fetch Data
+    private func getUsers() {
+        interactor?.fetchUsers()
+    }
+    
+    // MARK: - UI Customization
+    private func addTableView() {
+        view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+    }
+    
+    private func setupNavigationBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+    }
+
+}
+
+// MARK: - UserListDisplayLogic
+extension UserListViewController: UserListDisplayLogic {
+    func displayUsers(viewModel: UserList.ShowUsers.ViewModel) {
+        
+        rows = viewModel.rows
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Table View Data Source
+extension UserListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        rows.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellViewModel = rows[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier) as! UserCell
+        
+        cell.viewModel = cellViewModel
+        return cell
+    }
 }

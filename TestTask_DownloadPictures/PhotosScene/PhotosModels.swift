@@ -1,5 +1,5 @@
 //
-//  UserListWorker.swift
+//  PhotosModels.swift
 //  TestTask_DownloadPictures
 //
 //  Created by Кирилл Нескоромный on 21.11.2021.
@@ -12,9 +12,20 @@
 
 import UIKit
 
-class UserListWorker
+enum Photos
 {
-  func doSomeWork()
+  // MARK: Use cases
+  
+  enum Something
   {
+    struct Request
+    {
+    }
+    struct Response
+    {
+    }
+    struct ViewModel
+    {
+    }
   }
 }

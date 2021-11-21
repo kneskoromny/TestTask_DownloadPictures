@@ -12,30 +12,25 @@
 
 import UIKit
 
-protocol UserListBusinessLogic
-{
-  func doSomething(request: UserList.Something.Request)
+protocol UserListBusinessLogic {
+    func fetchUsers()
 }
 
-protocol UserListDataStore
-{
-  //var name: String { get set }
+protocol UserListDataStore {
+    var users: [User] { get }
 }
 
-class UserListInteractor: UserListBusinessLogic, UserListDataStore
-{
-  var presenter: UserListPresentationLogic?
-  var worker: UserListWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: UserList.Something.Request)
-  {
-    worker = UserListWorker()
-    worker?.doSomeWork()
+class UserListInteractor: UserListBusinessLogic, UserListDataStore {
     
-    let response = UserList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var presenter: UserListPresentationLogic?
+    var users = [User]()
+    
+    func fetchUsers() {
+        NetworkManager.shared.fetchData { [weak self] users in
+            self?.users = users
+            let response = UserList.ShowUsers.Response(users: users)
+            self?.presenter?.presentUsers(response: response)
+        }
+    }
+    
 }
