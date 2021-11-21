@@ -32,6 +32,9 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         return cv
     }()
     
+    private let itemsPerRow: CGFloat = 1
+    private let sectionInserts = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
+    
     // MARK: - Initializers
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -46,6 +49,10 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        addCollView()
+        
         doSomething()
     }
     
@@ -62,10 +69,10 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     // MARK: - UI Customization
     private func addCollView() {
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     private func setup() {
@@ -100,9 +107,30 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         return cell
     }
+}
+// MARK: - Collection View Delegate FlowLayout
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    // находим размер ячейки в зависимости от размера экрана
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
     
-    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return sectionInserts
+//    }
+    // вертикальный отступ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
+    }
+    // горизонтальный отступ
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.left
+    }
 }

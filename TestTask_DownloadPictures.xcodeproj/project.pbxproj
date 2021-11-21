@@ -133,7 +133,7 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		F77CC773274A88E200E6E36C /* PhotosScene */ = {
+		F77CC773274A88E200E6E36C /* Photos */ = {
 			isa = PBXGroup;
 			children = (
 				F77CC767274A88D800E6E36C /* PhotosPresenter.swift */,
@@ -143,7 +143,7 @@
 				F77CC76B274A88D800E6E36C /* PhotosViewController.swift */,
 				F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */,
 			);
-			path = PhotosScene;
+			path = Photos;
 			sourceTree = "<group>";
 		};
 		F793731A274A1941004E4D6B = {
@@ -168,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F77CC75E274A3AE200E6E36C /* UserListScene */,
-				F77CC773274A88E200E6E36C /* PhotosScene */,
+				F77CC773274A88E200E6E36C /* Photos */,
 				F77CC761274A420F00E6E36C /* Views */,
 				F77CC764274A535400E6E36C /* Services */,
 				F7937356274A196A004E4D6B /* Supports */,

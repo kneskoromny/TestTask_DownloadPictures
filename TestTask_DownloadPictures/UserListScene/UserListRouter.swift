@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol UserListRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToPhotos(segue: UIStoryboardSegue?)
 }
 
 protocol UserListDataPassing {
@@ -21,33 +21,35 @@ protocol UserListDataPassing {
 }
 
 class UserListRouter: NSObject, UserListRoutingLogic, UserListDataPassing {
+    
   weak var viewController: UserListViewController?
   var dataStore: UserListDataStore?
   
   // MARK: Routing
   
-  func routeToSomewhere(segue: UIStoryboardSegue?) {
+  func routeToPhotos(segue: UIStoryboardSegue?) {
     if let segue = segue {
-      let destinationVC = segue.destination as! SomewhereViewController
+      let destinationVC = segue.destination as! PhotosViewController
       var destinationDS = destinationVC.router!.dataStore!
-      passDataToSomewhere(source: dataStore!, destination: &destinationDS) } else {
+      passDataToPhotos(source: dataStore!, destination: &destinationDS)
+    } else {
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
-      let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
+      let destinationVC = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as! PhotosViewController
       var destinationDS = destinationVC.router!.dataStore!
-      passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-      navigateToSomewhere(source: viewController!, destination: destinationVC)
+      passDataToPhotos(source: dataStore!, destination: &destinationDS)
+      navigateToPhotos(source: viewController!, destination: destinationVC)
     }
   }
 
   // MARK: Navigation
   
-  func navigateToSomewhere(source: UserListViewController, destination: SomewhereViewController) {
+  func navigateToPhotos(source: UserListViewController, destination: PhotosViewController) {
     source.show(destination, sender: nil)
   }
   
   // MARK: Passing data
   
-  func passDataToSomewhere(source: UserListDataStore, destination: inout SomewhereDataStore) {
-    destination.name = source.name
+  func passDataToPhotos(source: UserListDataStore, destination: inout PhotosDataStore) {
+    //destination.name = source.name
   }
 }

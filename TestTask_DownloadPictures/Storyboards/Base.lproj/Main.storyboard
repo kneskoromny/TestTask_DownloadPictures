@@ -9,21 +9,64 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--User List View Controller-->
+        <!--Users-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="UserListViewController" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TQB-xv-cwd">
+                                <rect key="frame" x="87" y="140" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="pbc-bC-Ao4" customClass="UserCell" customModule="TestTask_DownloadPictures" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="240" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pbc-bC-Ao4" id="8au-KY-JTX">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ya1-zS-fgq" kind="show" identifier="Photos" id="2oR-lp-CKu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TQB-xv-cwd" secondAttribute="bottom" constant="594" id="AAH-17-dTw"/>
+                            <constraint firstItem="TQB-xv-cwd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="UCm-VV-NU1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TQB-xv-cwd" secondAttribute="trailing" constant="87" id="fQZ-41-n6c"/>
+                            <constraint firstItem="TQB-xv-cwd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="52" id="hIA-C4-Yhf"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BOe-zj-7xT"/>
+                    <navigationItem key="navigationItem" title="Users" id="BOe-zj-7xT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152.1739130434783" y="207.58928571428569"/>
+        </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="JdL-b1-qRm">
+            <objects>
+                <viewController id="Ya1-zS-fgq" customClass="PhotosViewController" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cqu-fG-PB1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cj7-cF-ejF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="een-Uz-o8t"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="45J-Az-UWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="208"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WJD-0C-fcu">
@@ -33,6 +76,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="OZF-mx-foV">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemBackgroundColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -44,7 +93,11 @@
             <point key="canvasLocation" x="242.0289855072464" y="207.58928571428569"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

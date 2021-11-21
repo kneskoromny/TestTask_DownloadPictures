@@ -37,6 +37,7 @@ class UserListViewController: UIViewController {
         super.viewDidLoad()
         UserListConfigurator.shared.configure(with: self)
         tableView.dataSource = self
+        tableView.delegate = self
         
         addTableView()
         setupNavigationBar()
@@ -75,7 +76,7 @@ class UserListViewController: UIViewController {
             navBarAppearance.configureWithOpaqueBackground()
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            navBarAppearance.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
@@ -105,5 +106,12 @@ extension UserListViewController: UITableViewDataSource {
         
         cell.viewModel = cellViewModel
         return cell
+    }
+}
+// MARK: - Table View Delegate
+extension UserListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Photos", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
