@@ -28,7 +28,7 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
-        cv.backgroundColor = .white
+        cv.backgroundColor = .green
         return cv
     }()
     
@@ -45,6 +45,7 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
         doSomething()
     }
     
@@ -91,4 +92,17 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     func displaySomething(viewModel: Photos.Something.ViewModel) {
         //nameTextField.text = viewModel.name
     }
+}
+// MARK: - Collection View Data Source
+extension PhotosViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+        return cell
+    }
+    
+    
 }
