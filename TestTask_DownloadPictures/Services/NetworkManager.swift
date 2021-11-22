@@ -7,15 +7,22 @@
 
 import Foundation
 
+enum URLStrings: String {
+    case users = "https://jsonplaceholder.typicode.com/users"
+    case albums = "http://jsonplaceholder.typicode.com/albums"
+    case photos = "http://jsonplaceholder.typicode.com/photos"
+}
+
 class NetworkManager {
     
     static let shared = NetworkManager()
-    private let strURL = "https://jsonplaceholder.typicode.com/users"
+    //private let strURL = "https://jsonplaceholder.typicode.com/users"
     
     private init() {}
     
     // TODO: сделать дженерик
-    func fetchData(completion: @escaping (_ users: [User]) -> Void) {
+    func fetchData(strURL: String,
+                   completion: @escaping (_ users: [User]) -> Void) {
         guard let url = URL(string: strURL) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in

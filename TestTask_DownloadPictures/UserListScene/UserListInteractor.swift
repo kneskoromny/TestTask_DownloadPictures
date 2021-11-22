@@ -26,7 +26,10 @@ class UserListInteractor: UserListBusinessLogic, UserListDataStore {
     var users = [User]()
     
     func fetchUsers() {
-        NetworkManager.shared.fetchData { [weak self] users in
+        NetworkManager.shared.fetchData(
+            strURL: URLStrings.users.rawValue
+        ) { [weak self] users in
+            
             self?.users = users
             let response = UserList.ShowUsers.Response(users: users)
             self?.presenter?.presentUsers(response: response)
