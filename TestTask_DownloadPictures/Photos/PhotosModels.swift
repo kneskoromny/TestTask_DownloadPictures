@@ -10,22 +10,30 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+//typealias PhotoCellViewModel = Photos.ShowPhotos.ViewModel.PhotoCellViewModel
 
-enum Photos
-{
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
-    {
+enum Photos {
+    
+    // MARK: Use cases
+    enum ShowPhotos {
+        struct Request {
+            
+        }
+        // интерактор презентеру
+        struct Response {
+            let name: String
+        }
+        // презентер в контроллер
+        struct ViewModel {
+            let name: String
+            
+//            struct PhotoCellViewModel: CellIdentifiable {
+//                let name: String
+//                var identifier: String {
+//                    "PhotoCell"
+//                }
+//            }
+//            let rows: [PhotoCellViewModel]
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

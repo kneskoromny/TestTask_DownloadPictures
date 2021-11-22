@@ -12,20 +12,20 @@
 
 import UIKit
 
-protocol PhotosPresentationLogic
-{
-  func presentSomething(response: Photos.Something.Response)
+protocol PhotosPresentationLogic {
+  func presentPhotos(response: Photos.ShowPhotos.Response)
 }
 
-class PhotosPresenter: PhotosPresentationLogic
-{
+class PhotosPresenter: PhotosPresentationLogic {
   weak var viewController: PhotosDisplayLogic?
   
   // MARK: Do something
   
-  func presentSomething(response: Photos.Something.Response)
-  {
-    let viewModel = Photos.Something.ViewModel()
+  func presentPhotos(response: Photos.ShowPhotos.Response) {
+//      var rows = [PhotoCellViewModel]()
+//      rows.append(response.name)
+      
+      let viewModel = Photos.ShowPhotos.ViewModel(name: response.name)
     viewController?.displaySomething(viewModel: viewModel)
   }
 }

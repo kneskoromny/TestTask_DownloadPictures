@@ -24,7 +24,7 @@ class UserListViewController: UIViewController {
     private var rows = [UserCellViewModel]()
     
     // MARK: - UI Elements
-    private var tableView: UITableView = {
+    var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.backgroundColor = .lightGray

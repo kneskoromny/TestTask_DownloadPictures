@@ -12,30 +12,26 @@
 
 import UIKit
 
-protocol PhotosBusinessLogic
-{
-  func doSomething(request: Photos.Something.Request)
+protocol PhotosBusinessLogic {
+  func doSomething(request: Photos.ShowPhotos.Request)
 }
 
-protocol PhotosDataStore
-{
-  //var name: String { get set }
+protocol PhotosDataStore {
+  var name: String { get set }
 }
 
-class PhotosInteractor: PhotosBusinessLogic, PhotosDataStore
-{
+class PhotosInteractor: PhotosBusinessLogic, PhotosDataStore {
   var presenter: PhotosPresentationLogic?
   var worker: PhotosWorker?
-  //var name: String = ""
+  var name: String = ""
   
   // MARK: Do something
   
-  func doSomething(request: Photos.Something.Request)
-  {
+  func doSomething(request: Photos.ShowPhotos.Request) {
     worker = PhotosWorker()
     worker?.doSomeWork()
     
-    let response = Photos.Something.Response()
-    presenter?.presentSomething(response: response)
+    let response = Photos.ShowPhotos.Response(name: name)
+    presenter?.presentPhotos(response: response)
   }
 }

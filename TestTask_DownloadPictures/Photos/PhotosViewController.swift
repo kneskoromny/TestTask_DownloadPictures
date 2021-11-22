@@ -13,7 +13,7 @@
 import UIKit
 
 protocol PhotosDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Photos.Something.ViewModel)
+    func displaySomething(viewModel: Photos.ShowPhotos.ViewModel)
 }
 
 class PhotosViewController: UIViewController, PhotosDisplayLogic {
@@ -29,6 +29,12 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
         return cv
+    }()
+    private let label: UILabel = {
+        let l = UILabel()
+        l.text = "Label"
+        l.backgroundColor = .green
+        return l
     }()
     
     private let itemsPerRow: CGFloat = 1
@@ -95,12 +101,12 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSomething() {
-        let request = Photos.Something.Request()
+        let request = Photos.ShowPhotos.Request()
         interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: Photos.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displaySomething(viewModel: Photos.ShowPhotos.ViewModel) {
+        navigationItem.title = viewModel.name
     }
 }
 
