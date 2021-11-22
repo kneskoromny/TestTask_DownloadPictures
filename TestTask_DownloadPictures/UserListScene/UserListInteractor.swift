@@ -27,7 +27,8 @@ class UserListInteractor: UserListBusinessLogic, UserListDataStore {
     
     func fetchUsers() {
         NetworkManager.shared.fetchData(
-            strURL: URLStrings.users.rawValue
+            strURL: URLStrings.users.rawValue,
+            type: [User].self
         ) { [weak self] users in
             
             self?.users = users

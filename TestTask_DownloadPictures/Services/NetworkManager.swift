@@ -16,13 +16,11 @@ enum URLStrings: String {
 class NetworkManager {
     
     static let shared = NetworkManager()
-    //private let strURL = "https://jsonplaceholder.typicode.com/users"
-    
     private init() {}
     
-    // TODO: сделать дженерик
-    func fetchData(strURL: String,
-                   completion: @escaping (_ users: [User]) -> Void) {
+    func fetchData<T: Codable>(strURL: String,
+                               type: T.Type,
+                               completion: @escaping (_ objects: T) -> Void) {
         guard let url = URL(string: strURL) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -32,9 +30,9 @@ class NetworkManager {
             }
             do {
                 let decoder = JSONDecoder()
-                let users = try decoder.decode([User].self, from: data)
+                let objects = try decoder.decode(type, from: data)
                 DispatchQueue.main.async {
-                    completion(users)
+                    completion(objects)
                 }
             } catch let error {
                 print("Error serialization json", error)
