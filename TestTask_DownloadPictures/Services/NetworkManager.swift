@@ -9,8 +9,8 @@ import Foundation
 
 enum URLStrings: String {
     case users = "https://jsonplaceholder.typicode.com/users"
-    case albums = "http://jsonplaceholder.typicode.com/albums"
-    case photos = "http://jsonplaceholder.typicode.com/photos"
+    case albums = "https://jsonplaceholder.typicode.com/albums"
+    case photos = "https://jsonplaceholder.typicode.com/photos"
 }
 
 class NetworkManager {

@@ -43,7 +43,7 @@ class UserListViewController: UIViewController {
         setupNavigationBar()
         navigationItem.title = "Пользователи"
         
-        getUsers()
+        getData()
     }
     
     // MARK: - Navigation
@@ -57,8 +57,10 @@ class UserListViewController: UIViewController {
     }
     
     // MARK: - Fetch Data
-    private func getUsers() {
+    private func getData() {
         interactor?.fetchUsers()
+        interactor?.fetchAlbums()
+        interactor?.fetchPhotos()
     }
     
     // MARK: - UI Customization

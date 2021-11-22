@@ -14,16 +14,24 @@ import UIKit
 
 protocol UserListBusinessLogic {
     func fetchUsers()
+    func fetchAlbums()
+    func fetchPhotos()
 }
 
 protocol UserListDataStore {
     var users: [User] { get }
+    var albums: [Album] { get }
+    var photos: [Photo] { get }
+    
 }
 
 class UserListInteractor: UserListBusinessLogic, UserListDataStore {
     
     var presenter: UserListPresentationLogic?
+    
     var users = [User]()
+    var albums = [Album]()
+    var photos = [Photo]()
     
     func fetchUsers() {
         NetworkManager.shared.fetchData(
@@ -34,6 +42,27 @@ class UserListInteractor: UserListBusinessLogic, UserListDataStore {
             self?.users = users
             let response = UserList.ShowUsers.Response(users: users)
             self?.presenter?.presentUsers(response: response)
+        }
+    }
+    func fetchAlbums() {
+        NetworkManager.shared.fetchData(
+            strURL: URLStrings.albums.rawValue,
+            type: [Album].self)
+        { [weak self] albums in
+            
+            self?.albums = albums
+            print(#function, albums.count)
+        }
+    }
+    
+    func fetchPhotos() {
+        NetworkManager.shared.fetchData(
+            strURL: URLStrings.photos.rawValue,
+            type: [Photo].self)
+        { [weak self] photos in
+            
+            self?.photos = photos
+            print(#function, photos.count)
         }
     }
     
