@@ -20,9 +20,18 @@ class PhotoCell: UICollectionViewCell {
         
         iv.label.backgroundColor = .darkGray
         iv.label.textColor = .white
+        iv.label.textAlignment = .center
+        iv.label.numberOfLines = 0
+        iv.label.font = UIFont(name: "Menlo", size: 12)
         iv.imageView.backgroundColor = .lightGray
         return iv
     }()
+    
+    var viewModel: CellIdentifiable? {
+        didSet {
+            updateView()
+        }
+    }
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -34,7 +43,7 @@ class PhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Public properties
+    // MARK: - Public methods
     func configureContentView() {
         contentView.layer.cornerRadius = 15
         layer.shadowColor = UIColor.darkGray.cgColor
@@ -48,7 +57,7 @@ class PhotoCell: UICollectionViewCell {
             .cgPath
     }
     
-    // MARK: - Private properties
+    // MARK: - Private methods
     private func addCustomView() {
         contentView.addSubview(cellCustomView)
         cellCustomView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
@@ -59,5 +68,13 @@ class PhotoCell: UICollectionViewCell {
             .isActive = true
         cellCustomView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
             .isActive = true
-    }  
+    }
+    private func updateView() {
+        guard let viewModel = viewModel as? PhotoCellViewModel else {
+            print(#function, "Apollo, we have problems!")
+            return
+        }
+        cellCustomView.label.text = viewModel.title
+
+    }
 }

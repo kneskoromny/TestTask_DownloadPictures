@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-//typealias PhotoCellViewModel = Photos.ShowPhotos.ViewModel.PhotoCellViewModel
+typealias PhotoCellViewModel = Photos.ShowPhotos.ViewModel.PhotoCellViewModel
 
 enum Photos {
     
@@ -22,18 +22,25 @@ enum Photos {
         // интерактор презентеру
         struct Response {
             let name: String
+            let photos: [Photo]
         }
         // презентер в контроллер
         struct ViewModel {
             let name: String
             
-//            struct PhotoCellViewModel: CellIdentifiable {
-//                let name: String
-//                var identifier: String {
-//                    "PhotoCell"
-//                }
-//            }
-//            let rows: [PhotoCellViewModel]
+            struct PhotoCellViewModel: CellIdentifiable {
+                let title: String
+                let strURL: String
+                
+                var identifier: String {
+                    "PhotoCell"
+                }
+                init(photo: Photo) {
+                    title = photo.title
+                    strURL = photo.url
+                }
+            }
+            let rows: [PhotoCellViewModel]
         }
     }
 }

@@ -50,7 +50,21 @@ class UserListRouter: NSObject, UserListRoutingLogic, UserListDataPassing {
   // MARK: Passing data
   
   func passDataToPhotos(source: UserListDataStore, destination: inout PhotosDataStore) {
+      
       guard let indexPath = viewController?.tableView.indexPathForSelectedRow else { return }
+      
+      // найти нужные изображения
+      let id = source.users[indexPath.row].id
+      let albumIDs = source.albums.filter { album in
+          album.userID == id
+      }.map { $0.id }
+      
+      let photos = source.photos.filter { photo in
+          albumIDs.contains(photo.albumID)
+      }
       destination.name = source.users[indexPath.row].name
+      destination.photos = photos
+      
+      
   }
 }

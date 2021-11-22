@@ -13,13 +13,15 @@
 import UIKit
 
 protocol PhotosDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Photos.ShowPhotos.ViewModel)
+    func displayPhotos(viewModel: Photos.ShowPhotos.ViewModel)
 }
 
 class PhotosViewController: UIViewController, PhotosDisplayLogic {
     
     var interactor: PhotosBusinessLogic?
     var router: (NSObjectProtocol & PhotosRoutingLogic & PhotosDataPassing)?
+    
+    var rows = [PhotoCellViewModel]()
     
     // MARK: - UI Elements
     private let collectionView: UICollectionView = {
@@ -105,20 +107,28 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         interactor?.doSomething(request: request)
     }
     
-    func displaySomething(viewModel: Photos.ShowPhotos.ViewModel) {
+    func displayPhotos(viewModel: Photos.ShowPhotos.ViewModel) {
         navigationItem.title = viewModel.name
+        
+        rows = viewModel.rows
+        print(#function, rows.count)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }
 
 // MARK: - Collection View Data Source
 extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        rows.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellViewModel = rows[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
         cell.configureContentView()
+        cell.viewModel = cellViewModel
         return cell
     }
 }

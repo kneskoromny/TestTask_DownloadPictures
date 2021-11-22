@@ -13,19 +13,23 @@
 import UIKit
 
 protocol PhotosPresentationLogic {
-  func presentPhotos(response: Photos.ShowPhotos.Response)
+    func presentPhotos(response: Photos.ShowPhotos.Response)
 }
 
 class PhotosPresenter: PhotosPresentationLogic {
-  weak var viewController: PhotosDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentPhotos(response: Photos.ShowPhotos.Response) {
-//      var rows = [PhotoCellViewModel]()
-//      rows.append(response.name)
-      
-      let viewModel = Photos.ShowPhotos.ViewModel(name: response.name)
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: PhotosDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentPhotos(response: Photos.ShowPhotos.Response) {
+        var rows = [PhotoCellViewModel]()
+        
+        response.photos.forEach { photo in
+            let photo = PhotoCellViewModel(photo: photo)
+            rows.append(photo)
+        }
+        let viewModel = Photos.ShowPhotos.ViewModel(name: response.name,
+                                                    rows: rows)
+        viewController?.displayPhotos(viewModel: viewModel)
+    }
 }
