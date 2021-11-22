@@ -14,6 +14,7 @@ class NetworkManager {
     
     private init() {}
     
+    // TODO: сделать дженерик
     func fetchData(completion: @escaping (_ users: [User]) -> Void) {
         guard let url = URL(string: strURL) else { return }
         
@@ -24,9 +25,7 @@ class NetworkManager {
             }
             do {
                 let decoder = JSONDecoder()
-                //decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let users = try decoder.decode([User].self, from: data)
-                print(#function, users)
                 DispatchQueue.main.async {
                     completion(users)
                 }
