@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-//import UIKit
-
 protocol UserListBusinessLogic {
     func fetchUsers()
     func fetchAlbums()

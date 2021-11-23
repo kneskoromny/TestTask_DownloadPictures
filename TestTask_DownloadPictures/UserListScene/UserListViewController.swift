@@ -36,12 +36,12 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserListConfigurator.shared.configure(with: self)
+        
         tableView.dataSource = self
         tableView.delegate = self
         
         addTableView()
         setupNavigationBar()
-        navigationItem.title = "Users"
         
         getData()
     }
@@ -56,13 +56,6 @@ class UserListViewController: UIViewController {
         }
     }
     
-    // MARK: - Fetch Data
-    private func getData() {
-        interactor?.fetchUsers()
-        interactor?.fetchAlbums()
-        interactor?.fetchPhotos()
-    }
-    
     // MARK: - UI Customization
     private func addTableView() {
         view.addSubview(tableView)
@@ -73,6 +66,8 @@ class UserListViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
+        navigationItem.title = "Users"
+        
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
             navBarAppearance.configureWithOpaqueBackground()
@@ -83,26 +78,34 @@ class UserListViewController: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
     }
-
+    
+    // MARK: - Work with data
+    private func getData() {
+        interactor?.fetchUsers()
+        interactor?.fetchAlbums()
+        interactor?.fetchPhotos()
+    }
 }
 
-// MARK: - UserListDisplayLogic
+// MARK: - UserList Display Logic
 extension UserListViewController: UserListDisplayLogic {
     func displayUsers(viewModel: UserList.ShowUsers.ViewModel) {
         
         rows = viewModel.rows
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
 }
 
 // MARK: - Table View Data Source
 extension UserListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        
         rows.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cellViewModel = rows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier) as! UserCell
         
@@ -112,7 +115,9 @@ extension UserListViewController: UITableViewDataSource {
 }
 // MARK: - Table View Delegate
 extension UserListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "Photos", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
