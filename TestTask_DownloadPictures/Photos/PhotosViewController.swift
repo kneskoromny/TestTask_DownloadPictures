@@ -103,8 +103,7 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSomething() {
-        let request = Photos.ShowPhotos.Request()
-        interactor?.doSomething(request: request)
+        interactor?.passData()
     }
     
     func displayPhotos(viewModel: Photos.ShowPhotos.ViewModel) {

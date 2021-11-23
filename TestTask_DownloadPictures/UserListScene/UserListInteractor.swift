@@ -10,7 +10,7 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+//import UIKit
 
 protocol UserListBusinessLogic {
     func fetchUsers()
@@ -51,10 +51,8 @@ class UserListInteractor: UserListBusinessLogic, UserListDataStore {
         { [weak self] albums in
             
             self?.albums = albums
-            print(#function, albums.count)
         }
     }
-    
     func fetchPhotos() {
         NetworkManager.shared.fetchData(
             strURL: URLStrings.photos.rawValue,
@@ -62,8 +60,6 @@ class UserListInteractor: UserListBusinessLogic, UserListDataStore {
         { [weak self] photos in
             
             self?.photos = photos
-            print(#function, photos.count)
         }
     }
-    
 }

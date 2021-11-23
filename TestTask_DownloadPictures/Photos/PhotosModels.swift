@@ -16,9 +16,6 @@ enum Photos {
     
     // MARK: Use cases
     enum ShowPhotos {
-        struct Request {
-            
-        }
         // интерактор презентеру
         struct Response {
             let name: String
