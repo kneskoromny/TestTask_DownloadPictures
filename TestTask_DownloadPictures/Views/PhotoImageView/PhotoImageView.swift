@@ -26,10 +26,11 @@ class PhotoImageView: UIImageView {
     
     // MARK: - Public methods
     func loadImage(strURL: String) {
-        if let imageData = ImageManager.shared.fetchImage(strUrl: strURL) {
-            imageView.image = UIImage(data: imageData)
-            spinner.stopAnimating()
-            spinner.isHidden = true
+        ImageManager.shared.fetchImage(strUrl: strURL) { data in
+            
+            self.imageView.image = UIImage(data: data)
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
         }
     }
     

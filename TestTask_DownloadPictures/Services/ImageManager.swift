@@ -12,11 +12,17 @@ class ImageManager {
     
     private init() {}
     
-    func fetchImage(strUrl: String) -> Data? {
-        guard let url = URL(string: strUrl) else { return nil }
-        print(#function, "Current Thread: \(Thread.current)")
-        guard let imageData = try? Data(contentsOf: url) else { return nil }
-        
-        return imageData
+    func fetchImage(strUrl: String, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: strUrl) else { return }
+
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No Description")
+                return
+            }
+            DispatchQueue.main.async {
+                completion(data)
+            }
+        }.resume()
     }
 }
