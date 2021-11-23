@@ -5,8 +5,6 @@
 //  Created by Кирилл Нескоромный on 21.11.2021.
 //
 
-import Foundation
-
 class UserListConfigurator {
     static let shared = UserListConfigurator()
     
