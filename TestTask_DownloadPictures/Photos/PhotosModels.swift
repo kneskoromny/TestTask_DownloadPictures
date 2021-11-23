@@ -14,17 +14,14 @@ typealias PhotoCellViewModel = Photos.ShowPhotos.ViewModel.PhotoCellViewModel
 
 enum Photos {
     
-    // MARK: Use cases
+    // MARK: - Use cases
     enum ShowPhotos {
-        struct Request {
-            
-        }
-        // интерактор презентеру
+        // интерактор - презентер
         struct Response {
             let name: String
             let photos: [Photo]
         }
-        // презентер в контроллер
+        // презентер - контроллер
         struct ViewModel {
             let name: String
             

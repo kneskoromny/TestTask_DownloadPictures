@@ -23,7 +23,6 @@
 		F77CC763274A534F00E6E36C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC762274A534F00E6E36C /* NetworkManager.swift */; };
 		F77CC766274A5E4400E6E36C /* UserListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */; };
 		F77CC76D274A88D800E6E36C /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC767274A88D800E6E36C /* PhotosPresenter.swift */; };
-		F77CC76E274A88D800E6E36C /* PhotosWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC768274A88D800E6E36C /* PhotosWorker.swift */; };
 		F77CC76F274A88D800E6E36C /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC769274A88D800E6E36C /* PhotosRouter.swift */; };
 		F77CC770274A88D800E6E36C /* PhotosModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76A274A88D800E6E36C /* PhotosModels.swift */; };
 		F77CC771274A88D800E6E36C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76B274A88D800E6E36C /* PhotosViewController.swift */; };
@@ -71,7 +70,6 @@
 		F77CC762274A534F00E6E36C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListConfigurator.swift; sourceTree = "<group>"; };
 		F77CC767274A88D800E6E36C /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
-		F77CC768274A88D800E6E36C /* PhotosWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosWorker.swift; sourceTree = "<group>"; };
 		F77CC769274A88D800E6E36C /* PhotosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRouter.swift; sourceTree = "<group>"; };
 		F77CC76A274A88D800E6E36C /* PhotosModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModels.swift; sourceTree = "<group>"; };
 		F77CC76B274A88D800E6E36C /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -116,12 +114,12 @@
 		F77CC75E274A3AE200E6E36C /* UserListScene */ = {
 			isa = PBXGroup;
 			children = (
-				F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */,
-				F77CC754274A3ADA00E6E36C /* UserListRouter.swift */,
+				F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */,
 				F77CC755274A3ADA00E6E36C /* UserListModels.swift */,
 				F77CC756274A3ADA00E6E36C /* UserListViewController.swift */,
 				F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */,
-				F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */,
+				F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */,
+				F77CC754274A3ADA00E6E36C /* UserListRouter.swift */,
 			);
 			path = UserListScene;
 			sourceTree = "<group>";
@@ -149,12 +147,11 @@
 		F77CC773274A88E200E6E36C /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				F77CC767274A88D800E6E36C /* PhotosPresenter.swift */,
-				F77CC768274A88D800E6E36C /* PhotosWorker.swift */,
-				F77CC769274A88D800E6E36C /* PhotosRouter.swift */,
 				F77CC76A274A88D800E6E36C /* PhotosModels.swift */,
 				F77CC76B274A88D800E6E36C /* PhotosViewController.swift */,
 				F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */,
+				F77CC767274A88D800E6E36C /* PhotosPresenter.swift */,
+				F77CC769274A88D800E6E36C /* PhotosRouter.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -394,7 +391,6 @@
 				F77CC76D274A88D800E6E36C /* PhotosPresenter.swift in Sources */,
 				F7937361274A1E11004E4D6B /* User.swift in Sources */,
 				F77CC77C274CB68C00E6E36C /* ImageManager.swift in Sources */,
-				F77CC76E274A88D800E6E36C /* PhotosWorker.swift in Sources */,
 				F77CC758274A3ADA00E6E36C /* UserListPresenter.swift in Sources */,
 				F77CC771274A88D800E6E36C /* PhotosViewController.swift in Sources */,
 				F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */,

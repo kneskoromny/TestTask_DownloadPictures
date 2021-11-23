@@ -10,10 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol PhotosBusinessLogic {
-    func doSomething(request: Photos.ShowPhotos.Request)
+    func passData()
 }
 
 protocol PhotosDataStore {
@@ -23,17 +21,13 @@ protocol PhotosDataStore {
 }
 
 class PhotosInteractor: PhotosBusinessLogic, PhotosDataStore {
+    
     var presenter: PhotosPresentationLogic?
-    var worker: PhotosWorker?
+    
     var name: String = ""
     var photos: [Photo] = []
     
-    // MARK: Do something
-    
-    func doSomething(request: Photos.ShowPhotos.Request) {
-        worker = PhotosWorker()
-        worker?.doSomeWork()
-        
+    func passData() {
         let response = Photos.ShowPhotos.Response(name: name, photos: photos)
         presenter?.presentPhotos(response: response)
     }

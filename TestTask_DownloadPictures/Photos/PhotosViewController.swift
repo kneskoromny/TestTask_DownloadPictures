@@ -16,7 +16,7 @@ protocol PhotosDisplayLogic: AnyObject {
     func displayPhotos(viewModel: Photos.ShowPhotos.ViewModel)
 }
 
-class PhotosViewController: UIViewController, PhotosDisplayLogic {
+class PhotosViewController: UIViewController {
     
     var interactor: PhotosBusinessLogic?
     var router: (NSObjectProtocol & PhotosRoutingLogic & PhotosDataPassing)?
@@ -32,6 +32,7 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         cv.register(PhotoCell.self, forCellWithReuseIdentifier: "PhotoCell")
         return cv
     }()
+    
     private let label: UILabel = {
         let l = UILabel()
         l.text = "Label"
@@ -39,6 +40,7 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         return l
     }()
     
+    // MARK: - Collection View Customization
     private let itemsPerRow: CGFloat = 1
     private let sectionInserts = UIEdgeInsets(top: 10, left: 10, bottom: -10, right: -10)
     
@@ -55,37 +57,16 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
         addCollView()
         
-        doSomething()
+        passData()
     }
     
-    // MARK: - Routing
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
-    // MARK: - UI Customization
-    private func addCollView() {
-        view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-            .isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
-            .isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-            .isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            .isActive = true
-    }
-    
+    // MARK: - Set up dependencies
     private func setup() {
         let viewController = self
         let interactor = PhotosInteractor()
@@ -98,35 +79,52 @@ class PhotosViewController: UIViewController, PhotosDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
     }
-    // MARK: Do something
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething() {
-        let request = Photos.ShowPhotos.Request()
-        interactor?.doSomething(request: request)
+    // MARK: - UI Customization
+    private func addCollView() {
+        view.addSubview(collectionView)
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor)
+            .isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
+            .isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+            .isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            .isActive = true
     }
     
+    // MARK: - Work with data
+    func passData() {
+        interactor?.passData()
+    }
+}
+
+// MARK: - Photos Display Logic
+extension PhotosViewController: PhotosDisplayLogic {
     func displayPhotos(viewModel: Photos.ShowPhotos.ViewModel) {
         navigationItem.title = viewModel.name
         
         rows = viewModel.rows
         print(#function, rows.count)
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
+        
+        self.collectionView.reloadData()
     }
 }
 
 // MARK: - Collection View Data Source
 extension PhotosViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        
         rows.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cellViewModel = rows[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellViewModel.identifier,
+                                                      for: indexPath) as! PhotoCell
         cell.configureContentView()
         cell.viewModel = cellViewModel
         return cell
@@ -135,20 +133,29 @@ extension PhotosViewController: UICollectionViewDataSource {
 
 // MARK: - Collection View Delegate FlowLayout
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
-    // находим размер ячейки в зависимости от размера экрана
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingWidth
         let widthPerItem = availableWidth / itemsPerRow
+        
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     // вертикальный отступ
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         return sectionInserts.top
     }
     // горизонтальный отступ
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
         return sectionInserts.left
     }
 }

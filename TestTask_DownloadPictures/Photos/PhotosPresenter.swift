@@ -10,21 +10,20 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol PhotosPresentationLogic {
     func presentPhotos(response: Photos.ShowPhotos.Response)
 }
 
 class PhotosPresenter: PhotosPresentationLogic {
+    
     weak var viewController: PhotosDisplayLogic?
     
-    // MARK: Do something
-    
     func presentPhotos(response: Photos.ShowPhotos.Response) {
+        
         var rows = [PhotoCellViewModel]()
         
         response.photos.forEach { photo in
+            
             let photo = PhotoCellViewModel(photo: photo)
             rows.append(photo)
         }
