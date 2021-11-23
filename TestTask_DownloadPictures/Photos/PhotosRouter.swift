@@ -13,16 +13,15 @@
 import UIKit
 
 @objc protocol PhotosRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
 protocol PhotosDataPassing {
-  var dataStore: PhotosDataStore? { get }
+    var dataStore: PhotosDataStore? { get }
 }
 
 class PhotosRouter: NSObject, PhotosRoutingLogic, PhotosDataPassing {
     
-  weak var viewController: PhotosViewController?
-  var dataStore: PhotosDataStore?
-  
+    weak var viewController: PhotosViewController?
+    var dataStore: PhotosDataStore?
 }

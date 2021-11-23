@@ -20,11 +20,9 @@ class UserCell: UITableViewCell, CellModelRepresentable {
     
     private func updateView() {
         guard let viewModel = viewModel as? UserCellViewModel else { return }
-        var content = defaultContentConfiguration()
         
+        var content = defaultContentConfiguration()
         content.text = viewModel.name
         contentConfiguration = content
-
     }
-
 }

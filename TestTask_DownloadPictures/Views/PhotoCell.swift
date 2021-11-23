@@ -22,8 +22,6 @@ class PhotoCell: UICollectionViewCell {
         pv.label.numberOfLines = 0
         pv.label.font = UIFont(name: "Menlo", size: 12)
         
-        pv.imageView.backgroundColor = .white
-        pv.imageView.contentMode = .scaleToFill
         return pv
     }()
     
@@ -36,7 +34,7 @@ class PhotoCell: UICollectionViewCell {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        addCustomView()
+        addPhotoView()
         
     }
     required init?(coder: NSCoder) {
@@ -58,7 +56,7 @@ class PhotoCell: UICollectionViewCell {
     }
     
     // MARK: - Private methods
-    private func addCustomView() {
+    private func addPhotoView() {
         contentView.addSubview(photoView)
         photoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
             .isActive = true
@@ -69,18 +67,12 @@ class PhotoCell: UICollectionViewCell {
         photoView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
             .isActive = true
     }
+    
     private func updateView() {
-        photoView.imageView.spinner.startAnimating()
+        guard let viewModel = viewModel as? PhotoCellViewModel else { return }
         
-        guard let viewModel = viewModel as? PhotoCellViewModel else {
-            print(#function, "Apollo, we have problems!")
-            return
-        }
+        photoView.imageView.spinner.startAnimating()
         photoView.label.text = viewModel.title
         photoView.imageView.loadImage(strURL: viewModel.strURL)
-        
-//        if let imageData = ImageManager.shared.fetchImage(strUrl: viewModel.strURL) {
-//            photoView.imageView.image = UIImage(data: imageData)
-//        }
     }
 }
