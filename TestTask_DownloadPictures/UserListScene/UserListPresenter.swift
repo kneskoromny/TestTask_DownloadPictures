@@ -10,8 +10,6 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
-
 protocol UserListPresentationLogic {
     func presentUsers(response: UserList.ShowUsers.Response)
 }
@@ -21,12 +19,15 @@ class UserListPresenter: UserListPresentationLogic {
     weak var viewController: UserListDisplayLogic?
     
     func presentUsers(response: UserList.ShowUsers.Response) {
+        
         var rows = [UserCellViewModel]()
+        
         response.users.forEach { user in
             let user = UserCellViewModel(user: user)
             rows.append(user)
         }
         let viewModel = UserList.ShowUsers.ViewModel(rows: rows)
+        
         viewController?.displayUsers(viewModel: viewModel)
     }
 }

@@ -16,26 +16,26 @@ protocol CellIdentifiable {
 }
 
 enum UserList {
-  // MARK: Use cases
-  
-  enum ShowUsers {
-    // интерактор - презентер
-    struct Response {
-        let users: [User]
-    }
-      // презентер - контроллер
-    struct ViewModel {
-        struct UserCellViewModel: CellIdentifiable {
-            let name: String
-            var identifier: String {
-                "UserCell"
-            }
-            
-            init(user: User) {
-                name = user.name
-            }
+    
+    // MARK: - Use cases
+    enum ShowUsers {
+        // интерактор - презентер
+        struct Response {
+            let users: [User]
         }
-        let rows: [UserCellViewModel]
+        // презентер - контроллер
+        struct ViewModel {
+            struct UserCellViewModel: CellIdentifiable {
+                let name: String
+                var identifier: String {
+                    "UserCell"
+                }
+                
+                init(user: User) {
+                    name = user.name
+                }
+            }
+            let rows: [UserCellViewModel]
+        }
     }
-  }
 }
