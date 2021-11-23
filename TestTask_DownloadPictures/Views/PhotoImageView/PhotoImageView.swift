@@ -26,9 +26,9 @@ class PhotoImageView: UIImageView {
     
     // MARK: - Public methods
     func loadImage(strURL: String) {
-        ImageManager.shared.fetchImage(strUrl: strURL) { data in
+        ImageManager.shared.fetchImage(strUrl: strURL) { image in
             
-            self.imageView.image = UIImage(data: data)
+            self.imageView.image = image
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
         }
