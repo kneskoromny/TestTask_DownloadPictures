@@ -11,20 +11,20 @@ class PhotoCell: UICollectionViewCell {
     
     // MARK: - Public Properties
     let cellCustomView: CustomView = {
-        let iv = CustomView(frame: .zero)
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.contentMode = .scaleAspectFill
+        let cv = CustomView(frame: .zero)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.layer.cornerRadius = 15
+        cv.layer.masksToBounds = true
         
-        iv.layer.cornerRadius = 15
-        iv.layer.masksToBounds = true
+        cv.label.backgroundColor = .darkGray
+        cv.label.textColor = .white
+        cv.label.textAlignment = .center
+        cv.label.numberOfLines = 0
+        cv.label.font = UIFont(name: "Menlo", size: 12)
         
-        iv.label.backgroundColor = .darkGray
-        iv.label.textColor = .white
-        iv.label.textAlignment = .center
-        iv.label.numberOfLines = 0
-        iv.label.font = UIFont(name: "Menlo", size: 12)
-        iv.imageView.backgroundColor = .lightGray
-        return iv
+        cv.imageView.backgroundColor = .lightGray
+        cv.imageView.contentMode = .scaleToFill
+        return cv
     }()
     
     var viewModel: CellIdentifiable? {
@@ -75,6 +75,8 @@ class PhotoCell: UICollectionViewCell {
             return
         }
         cellCustomView.label.text = viewModel.title
-
+        if let imageData = ImageManager.shared.fetchImage(strUrl: viewModel.strURL) {
+            cellCustomView.imageView.image = UIImage(data: imageData)
+        }
     }
 }
