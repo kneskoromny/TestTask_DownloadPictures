@@ -12,49 +12,59 @@
 
 import UIKit
 
-@objc protocol UserListRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol UserListRoutingLogic {
+  func routeToPhotos(segue: UIStoryboardSegue?)
 }
 
-protocol UserListDataPassing
-{
+protocol UserListDataPassing {
   var dataStore: UserListDataStore? { get }
 }
 
-class UserListRouter: NSObject, UserListRoutingLogic, UserListDataPassing
-{
+class UserListRouter: NSObject, UserListRoutingLogic, UserListDataPassing {
+    
   weak var viewController: UserListViewController?
   var dataStore: UserListDataStore?
   
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+  func routeToPhotos(segue: UIStoryboardSegue?) {
+    if let segue = segue {
+      let destinationVC = segue.destination as! PhotosViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToPhotos(source: dataStore!, destination: &destinationDS)
+    } else {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let destinationVC = storyboard.instantiateViewController(withIdentifier: "PhotosViewController") as! PhotosViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToPhotos(source: dataStore!, destination: &destinationDS)
+      navigateToPhotos(source: viewController!, destination: destinationVC)
+    }
+  }
 
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: UserListViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToPhotos(source: UserListViewController, destination: PhotosViewController) {
+    source.show(destination, sender: nil)
+  }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: UserListDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToPhotos(source: UserListDataStore, destination: inout PhotosDataStore) {
+      
+      guard let indexPath = viewController?.tableView.indexPathForSelectedRow else { return }
+      
+      // найти нужные изображения
+      let id = source.users[indexPath.row].id
+      let albumIDs = source.albums.filter { album in
+          album.userID == id
+      }.map { $0.id }
+      
+      let photos = source.photos.filter { photo in
+          albumIDs.contains(photo.albumID)
+      }
+      destination.name = source.users[indexPath.row].name
+      destination.photos = photos
+      
+      
+  }
 }

@@ -1,5 +1,5 @@
 //
-//  PhotosModels.swift
+//  PhotosRouter.swift
 //  TestTask_DownloadPictures
 //
 //  Created by Кирилл Нескоромный on 21.11.2021.
@@ -12,20 +12,17 @@
 
 import UIKit
 
-enum Photos
-{
-  // MARK: Use cases
+@objc protocol PhotosRoutingLogic {
+  //func routeToSomewhere(segue: UIStoryboardSegue?)
+}
+
+protocol PhotosDataPassing {
+  var dataStore: PhotosDataStore? { get }
+}
+
+class PhotosRouter: NSObject, PhotosRoutingLogic, PhotosDataPassing {
+    
+  weak var viewController: PhotosViewController?
+  var dataStore: PhotosDataStore?
   
-  enum Something
-  {
-    struct Request
-    {
-    }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }
