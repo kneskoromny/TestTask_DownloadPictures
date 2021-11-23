@@ -111,7 +111,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F77CC75E274A3AE200E6E36C /* UserListScene */ = {
+		F77CC75E274A3AE200E6E36C /* UserList */ = {
 			isa = PBXGroup;
 			children = (
 				F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */,
@@ -121,7 +121,7 @@
 				F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */,
 				F77CC754274A3ADA00E6E36C /* UserListRouter.swift */,
 			);
-			path = UserListScene;
+			path = UserList;
 			sourceTree = "<group>";
 		};
 		F77CC761274A420F00E6E36C /* Views */ = {
@@ -195,7 +195,7 @@
 		F7937325274A1941004E4D6B /* TestTask_DownloadPictures */ = {
 			isa = PBXGroup;
 			children = (
-				F77CC75E274A3AE200E6E36C /* UserListScene */,
+				F77CC75E274A3AE200E6E36C /* UserList */,
 				F77CC773274A88E200E6E36C /* Photos */,
 				F77CC761274A420F00E6E36C /* Views */,
 				F77CC764274A535400E6E36C /* Services */,
