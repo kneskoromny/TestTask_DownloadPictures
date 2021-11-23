@@ -25,6 +25,7 @@ enum UserList {
         }
         // презентер - контроллер
         struct ViewModel {
+            
             struct UserCellViewModel: CellIdentifiable {
                 let name: String
                 var identifier: String {
