@@ -32,6 +32,8 @@
 		F77CC777274B6DBD00E6E36C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC776274B6DBD00E6E36C /* CustomView.swift */; };
 		F77CC779274B6E0500E6E36C /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CC778274B6E0500E6E36C /* CustomView.xib */; };
 		F77CC77C274CB68C00E6E36C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC77B274CB68C00E6E36C /* ImageManager.swift */; };
+		F77CC77E274CBCEA00E6E36C /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC77D274CBCEA00E6E36C /* PhotoImageView.swift */; };
+		F77CC780274CBD7600E6E36C /* PhotoImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CC77F274CBD7600E6E36C /* PhotoImageView.xib */; };
 		F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937326274A1941004E4D6B /* AppDelegate.swift */; };
 		F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937328274A1941004E4D6B /* SceneDelegate.swift */; };
 		F793732E274A1941004E4D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F793732C274A1941004E4D6B /* Main.storyboard */; };
@@ -78,6 +80,8 @@
 		F77CC776274B6DBD00E6E36C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		F77CC778274B6E0500E6E36C /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
 		F77CC77B274CB68C00E6E36C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		F77CC77D274CBCEA00E6E36C /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		F77CC77F274CBD7600E6E36C /* PhotoImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoImageView.xib; sourceTree = "<group>"; };
 		F7937323274A1941004E4D6B /* TestTask_DownloadPictures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask_DownloadPictures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7937326274A1941004E4D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7937328274A1941004E4D6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			children = (
 				F77CC75F274A420B00E6E36C /* UserCell.swift */,
 				F77CC774274A8CDB00E6E36C /* PhotoCell.swift */,
+				F77CC781274CBFF600E6E36C /* PhotoImageView */,
 				F77CC77A274B6E1D00E6E36C /* CustomView */,
 			);
 			path = Views;
@@ -161,6 +166,15 @@
 				F77CC778274B6E0500E6E36C /* CustomView.xib */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		F77CC781274CBFF600E6E36C /* PhotoImageView */ = {
+			isa = PBXGroup;
+			children = (
+				F77CC77D274CBCEA00E6E36C /* PhotoImageView.swift */,
+				F77CC77F274CBD7600E6E36C /* PhotoImageView.xib */,
+			);
+			path = PhotoImageView;
 			sourceTree = "<group>";
 		};
 		F793731A274A1941004E4D6B = {
@@ -347,6 +361,7 @@
 				F7937333274A1943004E4D6B /* LaunchScreen.storyboard in Resources */,
 				F77CC779274B6E0500E6E36C /* CustomView.xib in Resources */,
 				F7937330274A1943004E4D6B /* Assets.xcassets in Resources */,
+				F77CC780274CBD7600E6E36C /* PhotoImageView.xib in Resources */,
 				F793732E274A1941004E4D6B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +390,7 @@
 				F77CC75C274A3ADA00E6E36C /* UserListViewController.swift in Sources */,
 				F77CC763274A534F00E6E36C /* NetworkManager.swift in Sources */,
 				F77CC74E274A349300E6E36C /* Photo.swift in Sources */,
+				F77CC77E274CBCEA00E6E36C /* PhotoImageView.swift in Sources */,
 				F77CC76D274A88D800E6E36C /* PhotosPresenter.swift in Sources */,
 				F7937361274A1E11004E4D6B /* User.swift in Sources */,
 				F77CC77C274CB68C00E6E36C /* ImageManager.swift in Sources */,

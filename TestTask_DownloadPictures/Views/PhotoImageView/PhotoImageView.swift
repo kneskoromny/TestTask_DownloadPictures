@@ -1,18 +1,17 @@
 //
-//  CustomView.swift
+//  PhotoImageView.swift
 //  TestTask_DownloadPictures
 //
-//  Created by Кирилл Нескоромный on 22.11.2021.
+//  Created by Кирилл Нескоромный on 23.11.2021.
 //
 
 import UIKit
 
-class CustomView: UIView {
-    
-    // MARK: - IB Outlets
+class PhotoImageView: UIImageView {
+
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var imageView: PhotoImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -27,7 +26,7 @@ class CustomView: UIView {
     
     // MARK: - Private methods
     private func addCustomView() {
-        Bundle.main.loadNibNamed("CustomView",
+        Bundle.main.loadNibNamed("PhotoImageView",
                                  owner: self,
                                  options: nil)
         addSubview(contentView)

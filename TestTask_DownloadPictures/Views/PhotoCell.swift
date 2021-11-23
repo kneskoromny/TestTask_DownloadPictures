@@ -10,21 +10,21 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     
     // MARK: - Public Properties
-    let cellCustomView: CustomView = {
-        let cv = CustomView(frame: .zero)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.layer.cornerRadius = 15
-        cv.layer.masksToBounds = true
+    let photoView: CustomView = {
+        let pv = CustomView(frame: .zero)
+        pv.translatesAutoresizingMaskIntoConstraints = false
+        pv.layer.cornerRadius = 15
+        pv.layer.masksToBounds = true
         
-        cv.label.backgroundColor = .darkGray
-        cv.label.textColor = .white
-        cv.label.textAlignment = .center
-        cv.label.numberOfLines = 0
-        cv.label.font = UIFont(name: "Menlo", size: 12)
+        pv.label.backgroundColor = .darkGray
+        pv.label.textColor = .white
+        pv.label.textAlignment = .center
+        pv.label.numberOfLines = 0
+        pv.label.font = UIFont(name: "Menlo", size: 12)
         
-        cv.imageView.backgroundColor = .lightGray
-        cv.imageView.contentMode = .scaleToFill
-        return cv
+        pv.imageView.backgroundColor = .white
+        pv.imageView.contentMode = .scaleToFill
+        return pv
     }()
     
     var viewModel: CellIdentifiable? {
@@ -59,14 +59,14 @@ class PhotoCell: UICollectionViewCell {
     
     // MARK: - Private methods
     private func addCustomView() {
-        contentView.addSubview(cellCustomView)
-        cellCustomView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
+        contentView.addSubview(photoView)
+        photoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
             .isActive = true
-        cellCustomView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        photoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             .isActive = true
-        cellCustomView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
+        photoView.leftAnchor.constraint(equalTo: contentView.leftAnchor)
             .isActive = true
-        cellCustomView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
+        photoView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
             .isActive = true
     }
     private func updateView() {
@@ -74,9 +74,9 @@ class PhotoCell: UICollectionViewCell {
             print(#function, "Apollo, we have problems!")
             return
         }
-        cellCustomView.label.text = viewModel.title
-        if let imageData = ImageManager.shared.fetchImage(strUrl: viewModel.strURL) {
-            cellCustomView.imageView.image = UIImage(data: imageData)
-        }
+        photoView.label.text = viewModel.title
+//        if let imageData = ImageManager.shared.fetchImage(strUrl: viewModel.strURL) {
+//            photoView.imageView.image = UIImage(data: imageData)
+//        }
     }
 }
