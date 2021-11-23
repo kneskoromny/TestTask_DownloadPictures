@@ -83,13 +83,13 @@ class PhotosViewController: UIViewController {
     // MARK: - UI Customization
     private func addCollView() {
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor)
             .isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
             .isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
             .isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             .isActive = true
     }
     

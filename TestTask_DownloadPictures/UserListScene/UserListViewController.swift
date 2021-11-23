@@ -27,7 +27,7 @@ class UserListViewController: UIViewController {
     var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .lightGray
+        //tv.backgroundColor = .lightGray
         tv.register(UserCell.self, forCellReuseIdentifier: "UserCell")
         return tv
     }()
@@ -59,10 +59,10 @@ class UserListViewController: UIViewController {
     // MARK: - UI Customization
     private func addTableView() {
         view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     private func setupNavigationBar() {
@@ -107,7 +107,7 @@ extension UserListViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellViewModel = rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier) as! UserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier, for: indexPath) as! UserCell
         
         cell.viewModel = cellViewModel
         return cell
