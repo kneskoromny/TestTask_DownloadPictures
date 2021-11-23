@@ -70,11 +70,15 @@ class PhotoCell: UICollectionViewCell {
             .isActive = true
     }
     private func updateView() {
+        photoView.imageView.spinner.startAnimating()
+        
         guard let viewModel = viewModel as? PhotoCellViewModel else {
             print(#function, "Apollo, we have problems!")
             return
         }
         photoView.label.text = viewModel.title
+        photoView.imageView.loadImage(strURL: viewModel.strURL)
+        
 //        if let imageData = ImageManager.shared.fetchImage(strUrl: viewModel.strURL) {
 //            photoView.imageView.image = UIImage(data: imageData)
 //        }

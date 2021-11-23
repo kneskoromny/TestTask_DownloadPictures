@@ -24,6 +24,15 @@ class PhotoImageView: UIImageView {
         addCustomView()
     }
     
+    // MARK: - Public methods
+    func loadImage(strURL: String) {
+        if let imageData = ImageManager.shared.fetchImage(strUrl: strURL) {
+            imageView.image = UIImage(data: imageData)
+            spinner.stopAnimating()
+            spinner.isHidden = true
+        }
+    }
+    
     // MARK: - Private methods
     private func addCustomView() {
         Bundle.main.loadNibNamed("PhotoImageView",

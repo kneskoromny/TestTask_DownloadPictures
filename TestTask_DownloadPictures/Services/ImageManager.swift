@@ -14,6 +14,7 @@ class ImageManager {
     
     func fetchImage(strUrl: String) -> Data? {
         guard let url = URL(string: strUrl) else { return nil }
+        print(#function, "Current Thread: \(Thread.current)")
         guard let imageData = try? Data(contentsOf: url) else { return nil }
         
         return imageData

@@ -41,7 +41,7 @@ class UserListViewController: UIViewController {
         
         addTableView()
         setupNavigationBar()
-        navigationItem.title = "Пользователи"
+        navigationItem.title = "Users"
         
         getData()
     }
