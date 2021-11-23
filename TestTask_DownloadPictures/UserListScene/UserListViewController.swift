@@ -27,7 +27,6 @@ class UserListViewController: UIViewController {
     var tableView: UITableView = {
         let tv = UITableView()
         tv.translatesAutoresizingMaskIntoConstraints = false
-        //tv.backgroundColor = .lightGray
         tv.register(UserCell.self, forCellReuseIdentifier: "UserCell")
         return tv
     }()
