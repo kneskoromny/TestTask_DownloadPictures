@@ -14,19 +14,8 @@
 		F77CC74E274A349300E6E36C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC74D274A349300E6E36C /* Photo.swift */; };
 		F77CC750274A34C700E6E36C /* SearchPhotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC74F274A34C700E6E36C /* SearchPhotoTests.swift */; };
 		F77CC751274A34CE00E6E36C /* Photo.json in Resources */ = {isa = PBXBuildFile; fileRef = F733B9B1274A33680075F9D6 /* Photo.json */; };
-		F77CC758274A3ADA00E6E36C /* UserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */; };
-		F77CC75A274A3ADA00E6E36C /* UserListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC754274A3ADA00E6E36C /* UserListRouter.swift */; };
-		F77CC75B274A3ADA00E6E36C /* UserListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC755274A3ADA00E6E36C /* UserListModels.swift */; };
-		F77CC75C274A3ADA00E6E36C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC756274A3ADA00E6E36C /* UserListViewController.swift */; };
-		F77CC75D274A3ADA00E6E36C /* UserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */; };
 		F77CC760274A420B00E6E36C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC75F274A420B00E6E36C /* UserCell.swift */; };
 		F77CC763274A534F00E6E36C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC762274A534F00E6E36C /* NetworkManager.swift */; };
-		F77CC766274A5E4400E6E36C /* UserListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */; };
-		F77CC76D274A88D800E6E36C /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC767274A88D800E6E36C /* PhotosPresenter.swift */; };
-		F77CC76F274A88D800E6E36C /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC769274A88D800E6E36C /* PhotosRouter.swift */; };
-		F77CC770274A88D800E6E36C /* PhotosModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76A274A88D800E6E36C /* PhotosModels.swift */; };
-		F77CC771274A88D800E6E36C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76B274A88D800E6E36C /* PhotosViewController.swift */; };
-		F77CC772274A88D800E6E36C /* PhotosInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */; };
 		F77CC775274A8CDB00E6E36C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC774274A8CDB00E6E36C /* PhotoCell.swift */; };
 		F77CC777274B6DBD00E6E36C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77CC776274B6DBD00E6E36C /* CustomView.swift */; };
 		F77CC779274B6E0500E6E36C /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F77CC778274B6E0500E6E36C /* CustomView.xib */; };
@@ -41,6 +30,10 @@
 		F793735F274A1C35004E4D6B /* Extension + XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793735E274A1C35004E4D6B /* Extension + XCTestCase.swift */; };
 		F7937361274A1E11004E4D6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937360274A1E11004E4D6B /* User.swift */; };
 		F7937366274A1FA4004E4D6B /* SearchUsersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7937365274A1FA4004E4D6B /* SearchUsersTests.swift */; };
+		F7A493302758DFAD00D8AC22 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A4932F2758DFAD00D8AC22 /* UserListView.swift */; };
+		F7A493322758DFC000D8AC22 /* UserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493312758DFC000D8AC22 /* UserListPresenter.swift */; };
+		F7A493342758DFEA00D8AC22 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493332758DFEA00D8AC22 /* PhotosView.swift */; };
+		F7A493362758DFF800D8AC22 /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,19 +54,8 @@
 		F733B9B1274A33680075F9D6 /* Photo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Photo.json; sourceTree = "<group>"; };
 		F77CC74D274A349300E6E36C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		F77CC74F274A34C700E6E36C /* SearchPhotoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoTests.swift; sourceTree = "<group>"; };
-		F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenter.swift; sourceTree = "<group>"; };
-		F77CC754274A3ADA00E6E36C /* UserListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRouter.swift; sourceTree = "<group>"; };
-		F77CC755274A3ADA00E6E36C /* UserListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModels.swift; sourceTree = "<group>"; };
-		F77CC756274A3ADA00E6E36C /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListInteractor.swift; sourceTree = "<group>"; };
 		F77CC75F274A420B00E6E36C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F77CC762274A534F00E6E36C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListConfigurator.swift; sourceTree = "<group>"; };
-		F77CC767274A88D800E6E36C /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
-		F77CC769274A88D800E6E36C /* PhotosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRouter.swift; sourceTree = "<group>"; };
-		F77CC76A274A88D800E6E36C /* PhotosModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModels.swift; sourceTree = "<group>"; };
-		F77CC76B274A88D800E6E36C /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosInteractor.swift; sourceTree = "<group>"; };
 		F77CC774274A8CDB00E6E36C /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		F77CC776274B6DBD00E6E36C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		F77CC778274B6E0500E6E36C /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
@@ -91,6 +73,10 @@
 		F793735E274A1C35004E4D6B /* Extension + XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + XCTestCase.swift"; sourceTree = "<group>"; };
 		F7937360274A1E11004E4D6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F7937365274A1FA4004E4D6B /* SearchUsersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchUsersTests.swift; path = /Users/kneskoromny/Documents/SWIFT/Development/TestTask_DownloadPictures/TestTask_UnitTests/Tests/SearchUsersTests.swift; sourceTree = "<absolute>"; };
+		F7A4932F2758DFAD00D8AC22 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		F7A493312758DFC000D8AC22 /* UserListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenter.swift; sourceTree = "<group>"; };
+		F7A493332758DFEA00D8AC22 /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
+		F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +100,8 @@
 		F77CC75E274A3AE200E6E36C /* UserList */ = {
 			isa = PBXGroup;
 			children = (
-				F77CC765274A5E4400E6E36C /* UserListConfigurator.swift */,
-				F77CC755274A3ADA00E6E36C /* UserListModels.swift */,
-				F77CC756274A3ADA00E6E36C /* UserListViewController.swift */,
-				F77CC757274A3ADA00E6E36C /* UserListInteractor.swift */,
-				F77CC752274A3ADA00E6E36C /* UserListPresenter.swift */,
-				F77CC754274A3ADA00E6E36C /* UserListRouter.swift */,
+				F7A4932F2758DFAD00D8AC22 /* UserListView.swift */,
+				F7A493312758DFC000D8AC22 /* UserListPresenter.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -147,11 +129,8 @@
 		F77CC773274A88E200E6E36C /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				F77CC76A274A88D800E6E36C /* PhotosModels.swift */,
-				F77CC76B274A88D800E6E36C /* PhotosViewController.swift */,
-				F77CC76C274A88D800E6E36C /* PhotosInteractor.swift */,
-				F77CC767274A88D800E6E36C /* PhotosPresenter.swift */,
-				F77CC769274A88D800E6E36C /* PhotosRouter.swift */,
+				F7A493332758DFEA00D8AC22 /* PhotosView.swift */,
+				F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -380,27 +359,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F77CC75A274A3ADA00E6E36C /* UserListRouter.swift in Sources */,
-				F77CC75D274A3ADA00E6E36C /* UserListInteractor.swift in Sources */,
-				F77CC772274A88D800E6E36C /* PhotosInteractor.swift in Sources */,
 				F77CC777274B6DBD00E6E36C /* CustomView.swift in Sources */,
-				F77CC75C274A3ADA00E6E36C /* UserListViewController.swift in Sources */,
 				F77CC763274A534F00E6E36C /* NetworkManager.swift in Sources */,
 				F77CC74E274A349300E6E36C /* Photo.swift in Sources */,
+				F7A493342758DFEA00D8AC22 /* PhotosView.swift in Sources */,
 				F77CC77E274CBCEA00E6E36C /* PhotoImageView.swift in Sources */,
-				F77CC76D274A88D800E6E36C /* PhotosPresenter.swift in Sources */,
 				F7937361274A1E11004E4D6B /* User.swift in Sources */,
 				F77CC77C274CB68C00E6E36C /* ImageManager.swift in Sources */,
-				F77CC758274A3ADA00E6E36C /* UserListPresenter.swift in Sources */,
-				F77CC771274A88D800E6E36C /* PhotosViewController.swift in Sources */,
 				F7937327274A1941004E4D6B /* AppDelegate.swift in Sources */,
+				F7A493362758DFF800D8AC22 /* PhotosPresenter.swift in Sources */,
+				F7A493302758DFAD00D8AC22 /* UserListView.swift in Sources */,
+				F7A493322758DFC000D8AC22 /* UserListPresenter.swift in Sources */,
 				F77CC760274A420B00E6E36C /* UserCell.swift in Sources */,
-				F77CC76F274A88D800E6E36C /* PhotosRouter.swift in Sources */,
 				F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */,
-				F77CC770274A88D800E6E36C /* PhotosModels.swift in Sources */,
 				F77CC775274A8CDB00E6E36C /* PhotoCell.swift in Sources */,
-				F77CC75B274A3ADA00E6E36C /* UserListModels.swift in Sources */,
-				F77CC766274A5E4400E6E36C /* UserListConfigurator.swift in Sources */,
 				F733B9AB274A30120075F9D6 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

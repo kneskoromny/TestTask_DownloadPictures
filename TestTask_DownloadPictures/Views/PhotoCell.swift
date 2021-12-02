@@ -25,11 +25,6 @@ class PhotoCell: UICollectionViewCell {
         return pv
     }()
     
-    var viewModel: CellIdentifiable? {
-        didSet {
-            updateView()
-        }
-    }
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -68,11 +63,10 @@ class PhotoCell: UICollectionViewCell {
             .isActive = true
     }
     
-    private func updateView() {
-        guard let viewModel = viewModel as? PhotoCellViewModel else { return }
+    private func updateView(with photo: Photo) {
         
         photoView.imageView.spinner.startAnimating()
-        photoView.label.text = viewModel.title
-        photoView.imageView.loadImage(strURL: viewModel.strURL)
+        photoView.label.text = photo.title
+        photoView.imageView.loadImage(strURL: photo.url)
     }
 }

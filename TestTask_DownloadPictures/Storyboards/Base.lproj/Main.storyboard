@@ -12,7 +12,7 @@
         <!--Users-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="UserListViewController" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="UserListView" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="1152.1739130434783" y="207.58928571428569"/>
         </scene>
-        <!--Photos View Controller-->
+        <!--Photos View-->
         <scene sceneID="JdL-b1-qRm">
             <objects>
-                <viewController id="Ya1-zS-fgq" customClass="PhotosViewController" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ya1-zS-fgq" customClass="PhotosView" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cqu-fG-PB1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
