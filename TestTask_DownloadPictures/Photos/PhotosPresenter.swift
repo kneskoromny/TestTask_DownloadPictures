@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+protocol PhotosPresenterProtocol {
+    var photosCount: Int { get }
+}
+
+class PhotosPresenter {
+    private let router: PhotosRouterProtocol
+    weak var view: PhotosViewProtocol?
+    var photos = [Photo]()
+    
+    init(photos: [Photo], router: PhotosRouterProtocol) {
+        self.photos = photos
+        self.router = router
+    }
+}
+
+extension PhotosPresenter: PhotosPresenterProtocol {
+    var photosCount: Int {
+        self.photos.count
+    }
+}

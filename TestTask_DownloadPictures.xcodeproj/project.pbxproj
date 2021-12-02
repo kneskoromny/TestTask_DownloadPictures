@@ -34,6 +34,8 @@
 		F7A493322758DFC000D8AC22 /* UserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493312758DFC000D8AC22 /* UserListPresenter.swift */; };
 		F7A493342758DFEA00D8AC22 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493332758DFEA00D8AC22 /* PhotosView.swift */; };
 		F7A493362758DFF800D8AC22 /* PhotosPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */; };
+		F7A493382758F5D200D8AC22 /* UserListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493372758F5D200D8AC22 /* UserListRouter.swift */; };
+		F7A4933A2758F5E000D8AC22 /* PhotosRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A493392758F5E000D8AC22 /* PhotosRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		F7A493312758DFC000D8AC22 /* UserListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListPresenter.swift; sourceTree = "<group>"; };
 		F7A493332758DFEA00D8AC22 /* PhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
 		F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPresenter.swift; sourceTree = "<group>"; };
+		F7A493372758F5D200D8AC22 /* UserListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRouter.swift; sourceTree = "<group>"; };
+		F7A493392758F5E000D8AC22 /* PhotosRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			children = (
 				F7A4932F2758DFAD00D8AC22 /* UserListView.swift */,
 				F7A493312758DFC000D8AC22 /* UserListPresenter.swift */,
+				F7A493372758F5D200D8AC22 /* UserListRouter.swift */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			children = (
 				F7A493332758DFEA00D8AC22 /* PhotosView.swift */,
 				F7A493352758DFF800D8AC22 /* PhotosPresenter.swift */,
+				F7A493392758F5E000D8AC22 /* PhotosRouter.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F77CC777274B6DBD00E6E36C /* CustomView.swift in Sources */,
+				F7A4933A2758F5E000D8AC22 /* PhotosRouter.swift in Sources */,
 				F77CC763274A534F00E6E36C /* NetworkManager.swift in Sources */,
 				F77CC74E274A349300E6E36C /* Photo.swift in Sources */,
 				F7A493342758DFEA00D8AC22 /* PhotosView.swift in Sources */,
@@ -370,6 +377,7 @@
 				F7A493362758DFF800D8AC22 /* PhotosPresenter.swift in Sources */,
 				F7A493302758DFAD00D8AC22 /* UserListView.swift in Sources */,
 				F7A493322758DFC000D8AC22 /* UserListPresenter.swift in Sources */,
+				F7A493382758F5D200D8AC22 /* UserListRouter.swift in Sources */,
 				F77CC760274A420B00E6E36C /* UserCell.swift in Sources */,
 				F7937329274A1941004E4D6B /* SceneDelegate.swift in Sources */,
 				F77CC775274A8CDB00E6E36C /* PhotoCell.swift in Sources */,

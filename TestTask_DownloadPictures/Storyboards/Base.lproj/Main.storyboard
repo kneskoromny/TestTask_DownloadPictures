@@ -54,7 +54,7 @@
         <!--Photos View-->
         <scene sceneID="JdL-b1-qRm">
             <objects>
-                <viewController id="Ya1-zS-fgq" customClass="PhotosView" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotosView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ya1-zS-fgq" customClass="PhotosView" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cqu-fG-PB1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45J-Az-UWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="208"/>
+            <point key="canvasLocation" x="1801" y="204"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WJD-0C-fcu">

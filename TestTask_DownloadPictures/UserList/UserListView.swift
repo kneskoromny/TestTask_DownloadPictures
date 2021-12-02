@@ -26,7 +26,7 @@ class UserListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = UserListPresenter(view: self)
+        presenter = UserListPresenter(view: self, router: UserListRouter(view: self))
         presenter.fetchData()
         
         tableView.dataSource = self
@@ -81,8 +81,11 @@ extension UserListView: UITableViewDataSource {
 extension UserListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "Photos", sender: nil)
+        if let user = presenter.getUser(at: indexPath) {
+            
+            presenter.didTap(user: user)
+        }
+        //performSegue(withIdentifier: "Photos", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

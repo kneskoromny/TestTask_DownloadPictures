@@ -12,16 +12,21 @@ protocol UserListPresenterProtocol {
     
     func fetchData()
     func getUser(at indexPath: IndexPath) -> User?
+    
+    func didTap(user: User)
 }
 class UserListPresenter {
     weak var view: UserListViewProtocol?
+    var router: UserListRouterProtocol
+    
     var users = [User]()
     
     var albums = [Album]()
     var photos = [Photo]()
     
-    init(view: UserListViewProtocol) {
+    init(view: UserListViewProtocol, router: UserListRouterProtocol) {
         self.view = view
+        self.router = router
     }
     
     private func fetchUsers() {
@@ -47,6 +52,15 @@ class UserListPresenter {
             print(self.photos.count)
         }
     }
+    private func getPhotos(with userID: Int) -> [Photo] {
+            let albumIDs = albums.filter { album in
+                album.userID == userID
+            }.map { $0.id }
+            
+            return photos.filter { photo in
+                albumIDs.contains(photo.albumID)
+            }
+        }
 }
 
 extension UserListPresenter: UserListPresenterProtocol {
@@ -62,5 +76,11 @@ extension UserListPresenter: UserListPresenterProtocol {
     
     func getUser(at indexPath: IndexPath) -> User? {
         self.users[indexPath.row]
+    }
+    
+    func didTap(user: User) {
+        let userPhotos = getPhotos(with: user.id)
+        print(userPhotos.count)
+        router.show(photos: userPhotos)
     }
 }
