@@ -31,6 +31,7 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let objects = try decoder.decode(type, from: data)
+                
                 DispatchQueue.main.async {
                     completion(objects)
                 }

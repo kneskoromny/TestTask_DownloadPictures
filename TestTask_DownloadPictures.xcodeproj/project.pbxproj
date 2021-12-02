@@ -201,6 +201,7 @@
 				F77CC764274A535400E6E36C /* Services */,
 				F7937356274A196A004E4D6B /* Supports */,
 				F7937357274A1982004E4D6B /* Storyboards */,
+				F7937362274A1E14004E4D6B /* Models */,
 				F793732F274A1943004E4D6B /* Assets.xcassets */,
 			);
 			path = TestTask_DownloadPictures;
@@ -231,7 +232,6 @@
 			children = (
 				F793732C274A1941004E4D6B /* Main.storyboard */,
 				F7937331274A1943004E4D6B /* LaunchScreen.storyboard */,
-				F7937362274A1E14004E4D6B /* Models */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
