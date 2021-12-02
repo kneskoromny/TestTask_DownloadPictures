@@ -10,8 +10,8 @@ import Foundation
 protocol UserListPresenterProtocol {
     var usersCount: Int { get }
     
-    func fetchData(completion: () -> Void)
-    func getUser(at indexPath: IndexPath) -> User
+    func fetchData()
+    func getUser(at indexPath: IndexPath) -> User?
 }
 class UserListPresenter {
     weak var view: UserListViewProtocol?
@@ -54,13 +54,13 @@ extension UserListPresenter: UserListPresenterProtocol {
         self.users.count
     }
     
-    func fetchData(completion: () -> Void) {
+    func fetchData() {
         fetchUsers()
         fetchAlbums()
         fetchPhotos()
     }
     
-    func getUser(at indexPath: IndexPath) -> User {
+    func getUser(at indexPath: IndexPath) -> User? {
         self.users[indexPath.row]
     }
 }

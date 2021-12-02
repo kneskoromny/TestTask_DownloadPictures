@@ -27,9 +27,10 @@ class UserListView: UIViewController {
         super.viewDidLoad()
         
         presenter = UserListPresenter(view: self)
-        presenter.fetchData {
-            tableView.reloadData()
-        }
+        presenter.fetchData()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
 
         addTableView()
         setupNavigationBar()
@@ -62,18 +63,16 @@ class UserListView: UIViewController {
 extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        5
-        //presenter.usersCount
+        presenter.usersCount
     }
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        let user = presenter.getUser(at: indexPath)
-        print(user)
-        //cell.updateView(with: user.name)
-        
+        if let user = presenter.getUser(at: indexPath) {
+            cell.updateView(with: user.name)
+        }
         return cell
     }
 }
