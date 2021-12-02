@@ -28,9 +28,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Ya1-zS-fgq" kind="show" identifier="Photos" id="2oR-lp-CKu"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -50,23 +47,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152.1739130434783" y="207.58928571428569"/>
-        </scene>
-        <!--Photos View-->
-        <scene sceneID="JdL-b1-qRm">
-            <objects>
-                <viewController storyboardIdentifier="PhotosView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ya1-zS-fgq" customClass="PhotosView" customModule="TestTask_DownloadPictures" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cqu-fG-PB1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="cj7-cF-ejF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="een-Uz-o8t"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="45J-Az-UWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1801" y="204"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WJD-0C-fcu">

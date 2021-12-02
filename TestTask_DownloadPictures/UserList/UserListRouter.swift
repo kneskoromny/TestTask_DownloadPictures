@@ -21,8 +21,9 @@ class UserListRouter {
 
 extension UserListRouter: UserListRouterProtocol {
     func show(photos: [Photo]) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let photosView = storyboard.instantiateViewController(withIdentifier: "PhotosView") as? PhotosView else { return }
+        let storyboard = UIStoryboard(name: "Photos", bundle: Bundle.main)
+        //guard let photosView = storyboard.instantiateViewController(withIdentifier: "PhotosView") as? PhotosView else { return }
+        guard let photosView = storyboard.instantiateInitialViewController() as? PhotosView else { return }
         
         let router = PhotosRouter(view: photosView)
         let presenter = PhotosPresenter(photos: photos, router: router)
