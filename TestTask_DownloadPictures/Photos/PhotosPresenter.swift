@@ -16,6 +16,7 @@ protocol PhotosPresenterProtocol {
 class PhotosPresenter {
     private let router: PhotosRouterProtocol
     weak var view: PhotosViewProtocol?
+    
     var photos = [Photo]()
     
     init(photos: [Photo], router: PhotosRouterProtocol) {

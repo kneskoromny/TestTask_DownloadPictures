@@ -22,7 +22,6 @@ class UserListRouter {
 extension UserListRouter: UserListRouterProtocol {
     func show(photos: [Photo]) {
         let storyboard = UIStoryboard(name: "Photos", bundle: Bundle.main)
-        //guard let photosView = storyboard.instantiateViewController(withIdentifier: "PhotosView") as? PhotosView else { return }
         guard let photosView = storyboard.instantiateInitialViewController() as? PhotosView else { return }
         
         let router = PhotosRouter(view: photosView)
@@ -31,8 +30,9 @@ extension UserListRouter: UserListRouterProtocol {
         presenter.view = photosView
         photosView.modalPresentationStyle = .automatic
         
-        DispatchQueue.main.async { [weak self] in
-            self?.view?.show(photosView, sender: nil)
+        DispatchQueue.main.async {
+            
+            self.view?.show(photosView, sender: nil)
         }
     }   
 }

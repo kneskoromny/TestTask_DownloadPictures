@@ -191,9 +191,9 @@
 				F77CC761274A420F00E6E36C /* Views */,
 				F77CC764274A535400E6E36C /* Services */,
 				F7937356274A196A004E4D6B /* Supports */,
-				F7937357274A1982004E4D6B /* Storyboards */,
 				F7937362274A1E14004E4D6B /* Models */,
 				F793732F274A1943004E4D6B /* Assets.xcassets */,
+				F7937331274A1943004E4D6B /* LaunchScreen.storyboard */,
 			);
 			path = TestTask_DownloadPictures;
 			sourceTree = "<group>";
@@ -217,14 +217,6 @@
 				F7937334274A1943004E4D6B /* Info.plist */,
 			);
 			path = Supports;
-			sourceTree = "<group>";
-		};
-		F7937357274A1982004E4D6B /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				F7937331274A1943004E4D6B /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		F793735A274A1B3E004E4D6B /* TestData */ = {

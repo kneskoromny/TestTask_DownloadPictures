@@ -10,16 +10,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private var appRouter: AppRouterType!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //appRouter = AppRouter()
-        //appRouter.showRootScreen()
-        
         return true
     }
-
-
 }
 
