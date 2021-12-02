@@ -26,7 +26,7 @@ class UserListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = UserListPresenter(view: self, router: UserListRouter(view: self))
+        //presenter = UserListPresenter(view: self, router: UserListRouter(view: self))
         presenter.fetchData()
         
         tableView.dataSource = self

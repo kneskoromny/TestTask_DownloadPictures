@@ -14,7 +14,7 @@ protocol AppRouterType {
 class AppRouter: AppRouterType {
     private(set) var window: UIWindow
 
-    init(window: UIWindow = UIWindow()) {
+    init(window: UIWindow) {
         self.window = window
     }
 
