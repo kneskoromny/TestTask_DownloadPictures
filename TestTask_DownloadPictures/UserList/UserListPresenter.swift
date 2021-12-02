@@ -77,10 +77,9 @@ extension UserListPresenter: UserListPresenterProtocol {
     func getUser(at indexPath: IndexPath) -> User? {
         self.users[indexPath.row]
     }
-    
+    // TODO: добавить title для navbara
     func didTap(user: User) {
         let userPhotos = getPhotos(with: user.id)
-        print(userPhotos.count)
         router.show(photos: userPhotos)
     }
 }

@@ -73,7 +73,11 @@ extension PhotosView: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell",
                                                       for: indexPath) as! PhotoCell
+        let photo = presenter.getPhoto(at: indexPath)
+        
         cell.configureContentView()
+        cell.updateView(with: photo)
+        
         return cell
     }
 }

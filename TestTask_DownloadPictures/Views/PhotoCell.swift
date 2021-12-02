@@ -63,7 +63,7 @@ class PhotoCell: UICollectionViewCell {
             .isActive = true
     }
     
-    private func updateView(with photo: Photo) {
+    func updateView(with photo: Photo) {
         
         photoView.imageView.spinner.startAnimating()
         photoView.label.text = photo.title

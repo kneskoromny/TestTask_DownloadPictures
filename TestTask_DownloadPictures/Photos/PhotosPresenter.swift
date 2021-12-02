@@ -9,6 +9,8 @@ import Foundation
 
 protocol PhotosPresenterProtocol {
     var photosCount: Int { get }
+    
+    func getPhoto(at indexPath: IndexPath) -> Photo
 }
 
 class PhotosPresenter {
@@ -25,5 +27,9 @@ class PhotosPresenter {
 extension PhotosPresenter: PhotosPresenterProtocol {
     var photosCount: Int {
         self.photos.count
+    }
+    
+    func getPhoto(at indexPath: IndexPath) -> Photo {
+        photos[indexPath.row]
     }
 }
