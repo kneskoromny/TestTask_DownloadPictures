@@ -64,6 +64,7 @@ extension UserListView: UITableViewDataSource {
                    numberOfRowsInSection section: Int) -> Int {
         presenter.usersCount
     }
+    
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -78,13 +79,12 @@ extension UserListView: UITableViewDataSource {
 
 // MARK: - Table View Delegate
 extension UserListView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let user = presenter.getUser(at: indexPath) {
-            
             presenter.didTap(user: user)
         }
-        //performSegue(withIdentifier: "Photos", sender: nil)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

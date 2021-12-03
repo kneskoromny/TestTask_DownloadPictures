@@ -33,7 +33,6 @@ class UserListPresenter {
         NetworkManager.shared.fetchData(strURL: URLStrings.users.rawValue,
                                         type: [User].self) { objects in
             self.users = objects
-            print(self.users.count)
             self.view?.updateView()
             
         }
@@ -42,14 +41,12 @@ class UserListPresenter {
         NetworkManager.shared.fetchData(strURL: URLStrings.albums.rawValue,
                                         type: [Album].self) { objects in
             self.albums = objects
-            print(self.albums.count)
         }
     }
     private func fetchPhotos() {
         NetworkManager.shared.fetchData(strURL: URLStrings.photos.rawValue,
                                         type: [Photo].self) { objects in
             self.photos = objects
-            print(self.photos.count)
         }
     }
     private func getPhotos(with userID: Int) -> [Photo] {

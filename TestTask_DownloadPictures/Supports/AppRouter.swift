@@ -21,7 +21,7 @@ class AppRouter: AppRouterType {
     func showRootScreen() {
         let storyboard = UIStoryboard(name: "UserList", bundle: Bundle.main)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController,
-                let userListView = navigationController.viewControllers.first as? UserListView else {
+              let userListView = navigationController.viewControllers.first as? UserListView else {
             fatalError("Не найден UINavigationController!")
         }
 

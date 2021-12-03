@@ -27,6 +27,7 @@ class ImageManager {
                     return
                 }
                 DispatchQueue.main.async {
+                    
                     self.cache.setObject(image, forKey: url as AnyObject)
                     completion(image)
                 }
