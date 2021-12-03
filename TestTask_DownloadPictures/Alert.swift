@@ -11,18 +11,19 @@ import UIKit
 struct Alert {
     static func show(in controller: UIViewController,
               with message: String,
-              and handler: ((UIAlertAction) -> Void)?) {
+              and completion: (() -> Void)? = nil) {
         
         let alert = UIAlertController(title: "Ошибка!",
                                       message: message,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
-                                    style: .default,
-                                    handler: handler)
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
+                                     style: .default) { action in
+            if let completion = completion {
+                completion()
+            }
+        }
         
         alert.addAction(okAction)
-        alert.addAction(cancelAction)
         
         controller.present(alert, animated: true)
     }

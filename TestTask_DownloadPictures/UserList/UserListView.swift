@@ -9,6 +9,7 @@ import UIKit
 
 protocol UserListViewProtocol: AnyObject {
     func updateView()
+    func showAlert()
 }
 
 class UserListView: UIViewController {
@@ -21,8 +22,11 @@ class UserListView: UIViewController {
         tv.register(UserCell.self, forCellReuseIdentifier: "UserCell")
         return tv
     }()
+    
+    // MARK: - Dependencies
     var presenter: UserListPresenterProtocol!
-
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +37,20 @@ class UserListView: UIViewController {
         setupNavigationBar()
         
         presenter.fetchData()
+        
+        let users = StorageManager.shared.fetch()
+        print(#function, users.count)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.launchTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.deleteFromStorage()
     }
     
     // MARK: - UI Customization
@@ -56,17 +74,14 @@ class UserListView: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
     }
-    
 }
+
 // MARK: - Table View Data Source
 extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         
-        switch presenter.usersCount {
-        case 0: return 1
-        default: return presenter.usersCount
-        }
+        presenter.usersCount
     }
     
     func tableView(_ tableView: UITableView,
@@ -76,25 +91,8 @@ extension UserListView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell",
                                                  for: indexPath) as! UserCell
         
-        switch presenter.usersCount {
-        case 0:
-            Alert.show(in: self,
-                       with: """
-Похоже нет соединения с интернет. Загрузить последние данные?
-""",
-                       and: nil)
-        default:
-            let user = presenter.getUser(at: indexPath)
-            cell.updateView(with: user?.name ?? "")
-        }
-        
-//        if let user = presenter.getUser(at: indexPath) {
-//            cell.updateView(with: user.name)
-//        } else {
-//            Alert.show(in: self,
-//                       with: "Похоже нет соединения с интернет. Загрузить последние данные?",
-//                       and: nil)
-//        }
+        let user = presenter.getUser(at: indexPath)
+        cell.updateView(with: user?.name ?? "")
         
         return cell
     }
@@ -114,6 +112,10 @@ extension UserListView: UITableViewDelegate {
 extension UserListView: UserListViewProtocol {
     func updateView() {
         tableView.reloadData()
+    }
+    func showAlert() {
+        Alert.show(in: self,
+                   with: "Похоже, что нет интернет соединения. Я загрузил последние доступные данные!")
     }
 }
 

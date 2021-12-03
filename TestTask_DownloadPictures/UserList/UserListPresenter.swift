@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Protocol requirements
 protocol UserListPresenterProtocol {
     var usersCount: Int { get }
     
@@ -14,32 +15,39 @@ protocol UserListPresenterProtocol {
     
     func fetchData()
     
-    func saveToStorage(_ objects: [User])
-    func loadFromStorage() -> [User]?
-    func deleteFromStorage(_ objects: [User])
+    //func loadFromStorage()
+    func deleteFromStorage()
     
+    func launchTimer()
     func didTap(user: User)
 }
+
 class UserListPresenter {
+    // MARK: - Dependencies
     weak var view: UserListViewProtocol?
     var router: UserListRouterProtocol
     
+    // MARK: - Data
     var users = [User]()
-    
     var albums = [Album]()
     var photos = [Photo]()
     
+    var timerCounter = 5.0
+    
+    // MARK: - Initializers
     init(view: UserListViewProtocol, router: UserListRouterProtocol) {
         self.view = view
         self.router = router
     }
+    
     // MARK: - Fetch from web
     private func fetchUsers() {
         NetworkManager.shared.fetchData(strURL: URLStrings.users.rawValue,
                                         type: [User].self) { objects in
             self.users = objects
-            self.view?.updateView()
+            self.saveToStorage(objects)
             
+            self.view?.updateView()
         }
     }
     private func fetchAlbums() {
@@ -55,6 +63,14 @@ class UserListPresenter {
         }
     }
     
+    // MARK: - Work with storage
+    private func saveToStorage(_ objects: [User]) {
+        StorageManager.shared.save(objects)
+    }
+    private func loadFromStorage() {
+        users = StorageManager.shared.fetch()
+    }
+    
     // MARK: - Find user photos
     private func getPhotos(with userID: Int) -> [Photo] {
             let albumIDs = albums.filter { album in
@@ -65,19 +81,27 @@ class UserListPresenter {
                 albumIDs.contains(photo.albumID)
             }
         }
+    
+    // MARK: - Timer action
+    @objc func updateUI() {
+        if users.isEmpty {
+            loadFromStorage()
+            view?.updateView()
+            view?.showAlert()
+        }
+    }
 }
 
+// MARK: - Protocol requirements implementation
 extension UserListPresenter: UserListPresenterProtocol {
     var usersCount: Int {
-        self.users.count
+        users.count
     }
-    
     func getUser(at indexPath: IndexPath) -> User? {
         switch usersCount {
         case 0: return nil
-        default: return self.users[indexPath.row]
+        default: return users[indexPath.row]
         }
-        
     }
     
     func fetchData() {
@@ -85,18 +109,22 @@ extension UserListPresenter: UserListPresenterProtocol {
         fetchAlbums()
         fetchPhotos()
     }
-    
-    func saveToStorage(_ objects: [User]) {
-        StorageManager.shared.save(objects)
-    }
-    func loadFromStorage() -> [User]? {
-        StorageManager.shared.fetch()
-    }
-    func deleteFromStorage(_ objects: [User]) {
+//    func loadFromStorage() {
+//        users = StorageManager.shared.fetch()
+//        view?.updateView()
+//    }
+    func deleteFromStorage() {
+        let objects: [User] = StorageManager.shared.fetch()
         StorageManager.shared.delete(objects)
     }
     
-    // TODO: добавить title для navbara
+    func launchTimer() {
+        Timer.scheduledTimer(timeInterval: timerCounter,
+                             target: self,
+                             selector: #selector(updateUI),
+                             userInfo: nil,
+                             repeats: false)
+    }
     func didTap(user: User) {
         let userPhotos = getPhotos(with: user.id)
         router.show(photos: userPhotos)
