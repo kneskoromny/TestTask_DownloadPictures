@@ -38,9 +38,6 @@ class UserListView: UIViewController {
         setupNavigationBar()
         
         presenter.fetchData()
-        
-        let users = StorageManager.shared.fetch()
-        print(#function, users.count)
     }
     
     override func viewDidAppear(_ animated: Bool) {

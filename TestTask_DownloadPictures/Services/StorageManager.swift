@@ -15,20 +15,20 @@ class StorageManager {
     
     private init() {}
     
-    func save(_ objects: [User]) {
+    func save<T: Codable>(_ objects: [T]) {
         userDefaults.set(try? JSONEncoder().encode(objects), forKey: key)
     }
     
-    func fetch() -> [User] {
-        var data = [User]()
+    func fetch<T: Codable>(type: [T].Type) -> [T] {
+        var data = [T]()
         if let savedData = userDefaults.value(forKey: key) as? Data {
-            data = try! JSONDecoder().decode([User].self, from: savedData)
+            data = try! JSONDecoder().decode(type, from: savedData)
             return data
         }
         return data
     }
     
-    func delete(_ objects: [User]) {
+    func delete<T: Codable>(_ objects: [T]) {
         objects.forEach { _ in
             userDefaults.removeObject(forKey: key)
         }

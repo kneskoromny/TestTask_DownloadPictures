@@ -43,7 +43,7 @@ class UserListPresenter {
         NetworkManager.shared.fetchData(strURL: URLStrings.users.rawValue,
                                         type: [User].self) { objects in
             self.users = objects
-            self.saveToStorage(objects)
+            self.saveToStorage(self.users)
             
             self.view?.updateView()
         }
@@ -66,7 +66,7 @@ class UserListPresenter {
         StorageManager.shared.save(objects)
     }
     private func loadFromStorage() {
-        users = StorageManager.shared.fetch()
+        users = StorageManager.shared.fetch(type: [User].self)
     }
     
     // MARK: - Find user photos
@@ -108,7 +108,7 @@ extension UserListPresenter: UserListPresenterProtocol {
         fetchPhotos()
     }
     func deleteFromStorage() {
-        let objects: [User] = StorageManager.shared.fetch()
+        let objects: [User] = StorageManager.shared.fetch(type: [User].self)
         StorageManager.shared.delete(objects)
     }
     
