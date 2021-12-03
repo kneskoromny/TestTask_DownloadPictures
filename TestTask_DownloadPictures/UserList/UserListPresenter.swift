@@ -109,10 +109,6 @@ extension UserListPresenter: UserListPresenterProtocol {
         fetchAlbums()
         fetchPhotos()
     }
-//    func loadFromStorage() {
-//        users = StorageManager.shared.fetch()
-//        view?.updateView()
-//    }
     func deleteFromStorage() {
         let objects: [User] = StorageManager.shared.fetch()
         StorageManager.shared.delete(objects)
@@ -127,6 +123,6 @@ extension UserListPresenter: UserListPresenterProtocol {
     }
     func didTap(user: User) {
         let userPhotos = getPhotos(with: user.id)
-        router.show(photos: userPhotos)
+        router.show(name: user.name, photos: userPhotos)
     }
 }

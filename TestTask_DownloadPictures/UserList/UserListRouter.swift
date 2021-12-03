@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserListRouterProtocol {
-    func show(photos: [Photo])
+    func show(name: String, photos: [Photo])
 }
 
 class UserListRouter {
@@ -20,7 +20,7 @@ class UserListRouter {
 }
 
 extension UserListRouter: UserListRouterProtocol {
-    func show(photos: [Photo]) {
+    func show(name: String, photos: [Photo]) {
         let storyboard = UIStoryboard(name: "Photos", bundle: Bundle.main)
         guard let photosView = storyboard.instantiateInitialViewController() as? PhotosView else { return }
         
@@ -33,6 +33,7 @@ extension UserListRouter: UserListRouterProtocol {
         DispatchQueue.main.async {
             
             self.view?.show(photosView, sender: nil)
+            photosView.navigationItem.title = name
         }
     }   
 }
