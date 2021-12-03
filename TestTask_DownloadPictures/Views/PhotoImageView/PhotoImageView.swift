@@ -8,7 +8,8 @@
 import UIKit
 
 class PhotoImageView: UIImageView {
-
+    
+    // MARK: - IB Outlets
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -24,7 +25,7 @@ class PhotoImageView: UIImageView {
         addCustomView()
     }
     
-    // MARK: - Public methods
+    // MARK: - Work with image
     func loadImage(strURL: String) {
         ImageManager.shared.fetchImage(strUrl: strURL) { image in
             
@@ -34,7 +35,7 @@ class PhotoImageView: UIImageView {
         }
     }
     
-    // MARK: - Private methods
+    // MARK: - Connect xib
     private func addCustomView() {
         Bundle.main.loadNibNamed("PhotoImageView",
                                  owner: self,

@@ -25,7 +25,7 @@ class CustomView: UIView {
         addCustomView()
     }
     
-    // MARK: - Private methods
+    // MARK: - Connect xib
     private func addCustomView() {
         Bundle.main.loadNibNamed("CustomView",
                                  owner: self,

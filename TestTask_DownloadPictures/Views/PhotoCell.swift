@@ -9,7 +9,7 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
-    // MARK: - Public Properties
+    // MARK: - UI elements
     let photoView: CustomView = {
         let pv = CustomView(frame: .zero)
         pv.translatesAutoresizingMaskIntoConstraints = false
@@ -33,10 +33,10 @@ class PhotoCell: UICollectionViewCell {
         
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("Не реализован кодер")
     }
     
-    // MARK: - Public methods
+    // MARK: - Content view design
     func configureContentView() {
         contentView.layer.cornerRadius = 15
         layer.shadowColor = UIColor.darkGray.cgColor
@@ -50,7 +50,7 @@ class PhotoCell: UICollectionViewCell {
             .cgPath
     }
     
-    // MARK: - Private methods
+    // MARK: - Add photo view
     private func addPhotoView() {
         contentView.addSubview(photoView)
         photoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
@@ -62,7 +62,7 @@ class PhotoCell: UICollectionViewCell {
         photoView.rightAnchor.constraint(equalTo: contentView.rightAnchor)
             .isActive = true
     }
-    
+    // MARK: - Photo view customization
     func updateView(with photo: Photo) {
         
         photoView.imageView.spinner.startAnimating()

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Protocol requirements
 protocol PhotosViewProtocol: AnyObject {
     func updateUI()
 }
@@ -29,7 +30,7 @@ class PhotosView: UIViewController {
         l.backgroundColor = .green
         return l
     }()
-    
+    // MARK: - Dependencies
     var presenter: PhotosPresenterProtocol!
     
     // MARK: - Collection View Customization
@@ -110,6 +111,7 @@ extension PhotosView: UICollectionViewDelegateFlowLayout {
         return sectionInserts.left
     }
 }
+// MARK: - Protocol requirements implementation
 extension PhotosView: PhotosViewProtocol {
     func updateUI() {
         collectionView.reloadData()

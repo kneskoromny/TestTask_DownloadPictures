@@ -6,11 +6,11 @@
 //
 
 import UIKit
-
+// MARK: - Protocol requirements
 protocol PhotosRouterProtocol {
-    
 }
 
+// MARK: - Protocol requirements implementation
 class PhotosRouter: PhotosRouterProtocol {
     weak var view: UIViewController?
     

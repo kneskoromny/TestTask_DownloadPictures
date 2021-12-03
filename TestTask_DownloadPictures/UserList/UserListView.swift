@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Protocol requirements
 protocol UserListViewProtocol: AnyObject {
     func updateView()
     func showAlert()
@@ -50,6 +51,7 @@ class UserListView: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         presenter.deleteFromStorage()
     }
     
@@ -62,7 +64,6 @@ class UserListView: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     private func setupNavigationBar() {
-        navigationItem.title = "Users"
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Protocol requirements
 protocol UserListRouterProtocol {
     func show(name: String, photos: [Photo])
 }
@@ -19,6 +20,7 @@ class UserListRouter {
     }
 }
 
+// MARK: - Protocol requirements implementation
 extension UserListRouter: UserListRouterProtocol {
     func show(name: String, photos: [Photo]) {
         let storyboard = UIStoryboard(name: "Photos", bundle: Bundle.main)

@@ -14,8 +14,6 @@ protocol UserListPresenterProtocol {
     func getUser(at indexPath: IndexPath) -> User?
     
     func fetchData()
-    
-    //func loadFromStorage()
     func deleteFromStorage()
     
     func launchTimer()

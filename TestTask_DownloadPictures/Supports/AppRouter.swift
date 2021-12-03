@@ -6,11 +6,12 @@
 //
 
 import UIKit
-
+// MARK: - Protocol requirements
 protocol AppRouterType {
     func showRootScreen()
 }
 
+// MARK: - Protocol requirements implementation
 class AppRouter: AppRouterType {
     private(set) var window: UIWindow
 
@@ -22,8 +23,9 @@ class AppRouter: AppRouterType {
         let storyboard = UIStoryboard(name: "UserList", bundle: Bundle.main)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController,
               let userListView = navigationController.viewControllers.first as? UserListView else {
-            fatalError("Не найден UINavigationController!")
+            fatalError("Не найдены контроллеры!")
         }
+        userListView.navigationItem.title = "Users"
 
         let router = UserListRouter(view: userListView)
         let presenter = UserListPresenter(view: userListView, router: router)

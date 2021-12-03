@@ -7,11 +7,9 @@
 
 import UIKit
 
-
 class UserCell: UITableViewCell {
     
     func updateView(with name: String) {
-
         var content = defaultContentConfiguration()
         content.text = name
         contentConfiguration = content
