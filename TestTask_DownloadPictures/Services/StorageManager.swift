@@ -15,8 +15,8 @@ class StorageManager {
     
     private init() {}
     
-    func save<T: Decodable>(_ value: [T]) {
-        userDefaults.set(value, forKey: key)
+    func save<T: Decodable>(_ objects: [T]) {
+        userDefaults.set(objects, forKey: key)
     }
     
     func fetch<T: Decodable>() -> [T]? {

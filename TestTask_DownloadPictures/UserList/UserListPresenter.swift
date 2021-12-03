@@ -10,8 +10,13 @@ import Foundation
 protocol UserListPresenterProtocol {
     var usersCount: Int { get }
     
-    func fetchData()
     func getUser(at indexPath: IndexPath) -> User?
+    
+    func fetchData()
+    
+    func saveToStorage(_ objects: [User])
+    func loadFromStorage() -> [User]?
+    func deleteFromStorage(_ objects: [User])
     
     func didTap(user: User)
 }
@@ -28,7 +33,7 @@ class UserListPresenter {
         self.view = view
         self.router = router
     }
-    
+    // MARK: - Fetch from web
     private func fetchUsers() {
         NetworkManager.shared.fetchData(strURL: URLStrings.users.rawValue,
                                         type: [User].self) { objects in
@@ -49,6 +54,8 @@ class UserListPresenter {
             self.photos = objects
         }
     }
+    
+    // MARK: - Find user photos
     private func getPhotos(with userID: Int) -> [Photo] {
             let albumIDs = albums.filter { album in
                 album.userID == userID
@@ -65,15 +72,30 @@ extension UserListPresenter: UserListPresenterProtocol {
         self.users.count
     }
     
+    func getUser(at indexPath: IndexPath) -> User? {
+        switch usersCount {
+        case 0: return nil
+        default: return self.users[indexPath.row]
+        }
+        
+    }
+    
     func fetchData() {
         fetchUsers()
         fetchAlbums()
         fetchPhotos()
     }
     
-    func getUser(at indexPath: IndexPath) -> User? {
-        self.users[indexPath.row]
+    func saveToStorage(_ objects: [User]) {
+        StorageManager.shared.save(objects)
     }
+    func loadFromStorage() -> [User]? {
+        StorageManager.shared.fetch()
+    }
+    func deleteFromStorage(_ objects: [User]) {
+        StorageManager.shared.delete(objects)
+    }
+    
     // TODO: добавить title для navbara
     func didTap(user: User) {
         let userPhotos = getPhotos(with: user.id)

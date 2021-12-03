@@ -26,13 +26,13 @@ class UserListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.fetchData()
-        
         tableView.dataSource = self
         tableView.delegate = self
 
         addTableView()
         setupNavigationBar()
+        
+        presenter.fetchData()
     }
     
     // MARK: - UI Customization
@@ -56,23 +56,46 @@ class UserListView: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         }
     }
-
+    
 }
 // MARK: - Table View Data Source
 extension UserListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        presenter.usersCount
+        
+        switch presenter.usersCount {
+        case 0: return 1
+        default: return presenter.usersCount
+        }
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-        if let user = presenter.getUser(at: indexPath) {
-            cell.updateView(with: user.name)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell",
+                                                 for: indexPath) as! UserCell
+        
+        switch presenter.usersCount {
+        case 0:
+            Alert.show(in: self,
+                       with: """
+Похоже нет соединения с интернет. Загрузить последние данные?
+""",
+                       and: nil)
+        default:
+            let user = presenter.getUser(at: indexPath)
+            cell.updateView(with: user?.name ?? "")
         }
+        
+//        if let user = presenter.getUser(at: indexPath) {
+//            cell.updateView(with: user.name)
+//        } else {
+//            Alert.show(in: self,
+//                       with: "Похоже нет соединения с интернет. Загрузить последние данные?",
+//                       and: nil)
+//        }
+        
         return cell
     }
 }

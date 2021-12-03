@@ -25,6 +25,7 @@ class NetworkManager {
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
+                
                 print(error?.localizedDescription ?? "No Description")
                 return
             }
