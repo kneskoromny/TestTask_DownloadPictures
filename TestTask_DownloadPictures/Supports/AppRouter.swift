@@ -30,7 +30,6 @@ class AppRouter: AppRouterType {
         let router = UserListRouter(view: userListView)
         let presenter = UserListPresenter(view: userListView, router: router)
         userListView.presenter = presenter
-        presenter.view = userListView
 
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

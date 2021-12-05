@@ -41,23 +41,23 @@ class UserListPresenter {
     // MARK: - Fetch from web
     private func fetchUsers() {
         NetworkManager.shared.fetchData(strURL: URLStrings.users.rawValue,
-                                        type: [User].self) { objects in
-            self.users = objects
-            self.saveToStorage(self.users)
+                                        type: [User].self) { [weak self] objects in
+            self?.users = objects
+            self?.saveToStorage(self?.users ?? [])
             
-            self.view?.updateView()
+            self?.view?.updateView()
         }
     }
     private func fetchAlbums() {
         NetworkManager.shared.fetchData(strURL: URLStrings.albums.rawValue,
-                                        type: [Album].self) { objects in
-            self.albums = objects
+                                        type: [Album].self) { [weak self] objects in
+            self?.albums = objects
         }
     }
     private func fetchPhotos() {
         NetworkManager.shared.fetchData(strURL: URLStrings.photos.rawValue,
-                                        type: [Photo].self) { objects in
-            self.photos = objects
+                                        type: [Photo].self) { [weak self] objects in
+            self?.photos = objects
         }
     }
     
@@ -108,7 +108,7 @@ extension UserListPresenter: UserListPresenterProtocol {
         fetchPhotos()
     }
     func deleteFromStorage() {
-        let objects: [User] = StorageManager.shared.fetch(type: [User].self)
+        let objects = StorageManager.shared.fetch(type: [User].self)
         StorageManager.shared.delete(objects)
     }
     
