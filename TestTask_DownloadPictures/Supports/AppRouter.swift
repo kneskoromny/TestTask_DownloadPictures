@@ -13,25 +13,29 @@ protocol AppRouterType {
 
 // MARK: - Protocol requirements implementation
 class AppRouter: AppRouterType {
-    private(set) var window: UIWindow
-
-    init(window: UIWindow) {
+    private var window: UIWindow?
+    
+    init(window: UIWindow?) {
         self.window = window
     }
-
+    
     func showRootScreen() {
         let storyboard = UIStoryboard(name: "UserList", bundle: Bundle.main)
         guard let navigationController = storyboard.instantiateInitialViewController() as? UINavigationController,
-              let userListView = navigationController.viewControllers.first as? UserListView else {
+              let userListView = navigationController.viewControllers.first as? UserListView
+        else {
             fatalError("Не найдены контроллеры!")
         }
+        
         userListView.navigationItem.title = "Users"
-
+        
+        
         let router = UserListRouter(view: userListView)
         let presenter = UserListPresenter(view: userListView, router: router)
         userListView.presenter = presenter
-
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+        
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 }
