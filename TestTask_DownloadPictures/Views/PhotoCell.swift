@@ -38,12 +38,10 @@ class PhotoCell: UICollectionViewCell {
     
     // MARK: - Content view design
     func configureContentView() {
-        contentView.layer.cornerRadius = 15
-        layer.shadowColor = UIColor.darkGray.cgColor
-        layer.shadowOffset = CGSize(width: 5, height: 7)
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.7
-        layer.masksToBounds = false
+        contentView.layer.shadowColor = UIColor.darkGray.cgColor
+        contentView.layer.shadowOffset = CGSize(width: 5, height: -3)
+        contentView.layer.shadowRadius = 3
+        contentView.layer.shadowOpacity = 0.7
         
         layer.shadowPath = UIBezierPath(roundedRect: bounds,
                                         cornerRadius: contentView.layer.cornerRadius)
